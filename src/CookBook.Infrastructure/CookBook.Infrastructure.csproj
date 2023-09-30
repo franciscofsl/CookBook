@@ -3,7 +3,22 @@
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
+        <Nullable>disable</Nullable>
     </PropertyGroup>
+
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\libs\src\Sawnet.Infrastructure\Sawnet.Infrastructure.csproj" />
+      <ProjectReference Include="..\CookBook.Core\CookBook.Core.csproj" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <Reference Include="Microsoft.EntityFrameworkCore.InMemory">
+        <HintPath>..\..\..\.nuget\packages\microsoft.entityframeworkcore.inmemory\7.0.11\lib\net6.0\Microsoft.EntityFrameworkCore.InMemory.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+
 
 </Project>

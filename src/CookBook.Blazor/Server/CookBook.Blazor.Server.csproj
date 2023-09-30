@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
-        <Nullable>enable</Nullable>
+        <Nullable>disable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
@@ -11,9 +11,12 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\..\..\libs\src\Sawnet.Server\Sawnet.Server.csproj" />
+        <ProjectReference Include="..\..\CookBook.Application\CookBook.Application.csproj" />
         <ProjectReference Include="..\Client\CookBook.Blazor.Client.csproj"/>
         <ProjectReference Include="..\Shared\CookBook.Blazor.Shared.csproj"/>
     </ItemGroup>
+
 
 
 </Project>

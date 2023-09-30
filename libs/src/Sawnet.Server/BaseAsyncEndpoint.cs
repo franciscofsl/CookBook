@@ -10,14 +10,14 @@ public static class BaseAsyncEndpoint
         {
             public abstract Task<ActionResult<TResponse>> HandleAsync(
                 TRequest request,
-                CancellationToken cancellationToken = default (CancellationToken));
+                CancellationToken cancellationToken = default);
         }
 
         public abstract class WithoutResponse : EndpointBase
         {
             public abstract Task<ActionResult> HandleAsync(
                 TRequest request,
-                CancellationToken cancellationToken = default (CancellationToken));
+                CancellationToken cancellationToken = default);
         }
     }
 
@@ -26,12 +26,12 @@ public static class BaseAsyncEndpoint
         public abstract class WithResponse<TResponse> : EndpointBase
         {
             public abstract Task<ActionResult<TResponse>> HandleAsync(
-                CancellationToken cancellationToken = default (CancellationToken));
+                CancellationToken cancellationToken = default);
         }
 
         public abstract class WithoutResponse : EndpointBase
         {
-            public abstract Task<ActionResult> HandleAsync(CancellationToken cancellationToken = default (CancellationToken));
+            public abstract Task<ActionResult> HandleAsync(CancellationToken cancellationToken = default);
         }
     }
 }
