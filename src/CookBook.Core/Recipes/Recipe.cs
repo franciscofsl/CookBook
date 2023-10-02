@@ -1,4 +1,5 @@
-﻿using CookBook.Core.Recipes.ValueObjects;
+﻿using CookBook.Core.Recipes.Events;
+using CookBook.Core.Recipes.ValueObjects;
 
 namespace CookBook.Core.Recipes;
 
@@ -13,6 +14,8 @@ public class Recipe : AggregateRoot<RecipeId>
     {
         Title = GuardClauses.NotNull(title, nameof(title));
         Description = GuardClauses.NotNull(description, nameof(description));
+
+        RaiseDomainEvent(new RecipeCreated(this));
     }
 
     public RecipeTitle Title { get; private set; }

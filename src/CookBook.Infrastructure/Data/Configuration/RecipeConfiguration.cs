@@ -14,5 +14,7 @@ public class RecipeConfiguration : IEntityTypeConfiguration<Recipe>
 
         builder.OwnsOne(_ => _.Title);
         builder.OwnsOne(_ => _.Description);
+
+        builder.Ignore(_ => _.Events);
     }
 }

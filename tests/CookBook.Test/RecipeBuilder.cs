@@ -1,6 +1,7 @@
-﻿using CookBook.Core.Recipes.ValueObjects;
+﻿using CookBook.Core.Recipes;
+using CookBook.Core.Recipes.ValueObjects;
 
-namespace CookBook.Domain.Tests.Recipes;
+namespace CookBook.Test;
 
 public class RecipeBuilder
 {
