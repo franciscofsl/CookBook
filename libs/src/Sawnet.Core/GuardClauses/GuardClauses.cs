@@ -7,7 +7,6 @@ public static class GuardClauses
         if (obj is null)
         {
             throw new ArgumentNullException($"{name} must not be null");
-
         }
         return obj;
     }
