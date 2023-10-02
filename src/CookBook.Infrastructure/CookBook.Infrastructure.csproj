@@ -9,6 +9,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\libs\src\Sawnet.Infrastructure\Sawnet.Infrastructure.csproj" />
+      <ProjectReference Include="..\CookBook.Application\CookBook.Application.csproj" />
       <ProjectReference Include="..\CookBook.Core\CookBook.Core.csproj" />
     </ItemGroup>
 
@@ -18,6 +19,8 @@
         <HintPath>..\..\..\.nuget\packages\microsoft.entityframeworkcore.inmemory\7.0.11\lib\net6.0\Microsoft.EntityFrameworkCore.InMemory.dll</HintPath>
       </Reference>
     </ItemGroup>
+
+
 
 
 

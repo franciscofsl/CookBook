@@ -3,20 +3,12 @@
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>disable</Nullable>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
 
-
-
     <ItemGroup>
-      <ProjectReference Include="..\..\libs\src\Sawnet.Application\Sawnet.Application.csproj" />
-      <ProjectReference Include="..\CookBook.Core\CookBook.Core.csproj" />
+      <ProjectReference Include="..\..\src\CookBook.Core\CookBook.Core.csproj" />
     </ItemGroup>
-
-
-
-
-
 
 
 </Project>

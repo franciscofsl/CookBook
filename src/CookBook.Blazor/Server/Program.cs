@@ -1,4 +1,4 @@
-using CookBook.Application;
+using CookBook.Blazor.Server;
 using Sawnet.Core.Modules;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -35,7 +35,7 @@ app.UseRouting();
 //app.UseSwagger();
 //app.UseSwaggerUI(c =>
 //{
-    //c.SwaggerEndpoint("/swagger/v1/swagger.json", "Blazor API V1");
+//c.SwaggerEndpoint("/swagger/v1/swagger.json", "Blazor API V1");
 //});
 
 app.MapRazorPages();
@@ -48,6 +48,5 @@ namespace CookBook.Blazor.Server
 {
     public partial class Program
     {
-    
     }
 }

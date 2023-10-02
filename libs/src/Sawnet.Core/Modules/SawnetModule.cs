@@ -5,7 +5,10 @@ namespace Sawnet.Core.Modules;
 
 public abstract class SawnetModule
 {
-    public abstract void ConfigureCustomServices(IServiceCollection services);
+    public virtual void ConfigureCustomServices(IServiceCollection services)
+    {
+        
+    }
 
     public void ConfigureServices(IServiceCollection services)
     {

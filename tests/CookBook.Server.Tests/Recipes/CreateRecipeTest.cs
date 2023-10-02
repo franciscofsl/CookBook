@@ -1,7 +1,7 @@
-﻿using CookBook.Application.Recipes.Dtos;
+﻿using System.Net.Http.Json;
+using CookBook.Application.Recipes.Dtos;
 using CookBook.Blazor.Server.Endpoints;
 using Shouldly;
-using System.Net.Http.Json;
 
 namespace CookBook.Server.Tests.Recipes;
 
@@ -29,5 +29,21 @@ public class CreateRecipeTest : IClassFixture<CookBookTestWebApplication>
 
         createdRecipe.Title.ShouldBe(createInput.Title);
         createdRecipe.Description.ShouldBe(createInput.Description);
+    }
+
+    [Fact]
+    public async Task Should_Write_In_Log_At_Create_Recipe()
+    {
+        var createInput = new CreateRecipeDto
+        {
+            Title = "Recipe title",
+            Description = "Recipe description"
+        };
+
+        await _client.PostAsJsonAsync(ApiRoutes.Recipes, createInput);
+
+        var logResult = await _client.GetFromJsonAsync<List<string>>(ApiRoutes.Logs);
+
+        logResult.ElementAt(0).ShouldBe($"The recipe '{createInput.Title}' has been created.");
     }
 }
