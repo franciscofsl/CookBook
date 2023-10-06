@@ -2,13 +2,8 @@
 
 public abstract class EntityId : ValueObject
 {
-    public Guid Id { get; private set; }
-
-    protected EntityId(Guid id)
-    {
-        Id = id;
-    }
-
+    public Guid Id { get; protected init; }
+    
     public override bool Equals(object obj)
     {
         if (obj is EntityId id)

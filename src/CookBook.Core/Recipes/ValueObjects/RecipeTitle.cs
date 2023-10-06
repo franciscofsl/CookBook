@@ -9,7 +9,7 @@ public sealed class RecipeTitle : ValueObject
     
     private RecipeTitle(string title)
     {
-        Title = GuardClauses.NotNullOrEmpty(title, nameof(title));
+        Title = GuardClause.NotNullOrEmpty(title, nameof(title));
     }
 
     public static RecipeTitle Create(string title)
