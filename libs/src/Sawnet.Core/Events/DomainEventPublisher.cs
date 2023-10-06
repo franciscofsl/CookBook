@@ -14,6 +14,8 @@ public class DomainEventPublisher : IDomainEventPublisher
         var type = typeof(IDomainEventHandler<>).MakeGenericType(domainEvent.GetType());
         dynamic handler = _serviceProvider.GetService(type);
         CancellationToken token = default;
+        
+        
         await handler.Handle((dynamic)domainEvent, token);
     }
 }
