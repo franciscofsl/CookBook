@@ -7,21 +7,20 @@ public abstract class SawnetModule
 {
     public virtual void ConfigureCustomServices(IServiceCollection services)
     {
-        
     }
 
     public void ConfigureServices(IServiceCollection services)
     {
         ConfigureCustomServices(services);
         var modules = GetModules();
-        
+
         foreach (var module in modules)
         {
             module.ConfigureServices(services);
         }
     }
-    
-    private IReadOnlyList<SawnetModule> GetModules()
+
+    internal IReadOnlyList<SawnetModule> GetModules()
     {
         var modulesToIncludeAttribute = GetType().GetCustomAttribute<ModulesToInclude>();
 

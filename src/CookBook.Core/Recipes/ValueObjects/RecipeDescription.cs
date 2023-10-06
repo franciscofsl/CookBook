@@ -8,7 +8,7 @@ public sealed class RecipeDescription : ValueObject
 
     private RecipeDescription(string description)
     {
-        Description = GuardClauses.NotNullOrEmpty(description, nameof(description));
+        Description = GuardClause.NotNullOrEmpty(description, nameof(description));
     }
 
     public static RecipeDescription Create(string recipeDescription)

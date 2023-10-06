@@ -1,6 +1,9 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System.Runtime.CompilerServices;
+using Microsoft.Extensions.DependencyInjection;
 using Sawnet.Core.Events;
 using Sawnet.Core.Modules;
+
+[assembly: InternalsVisibleTo("Sawnet.Core.Tests")]
 
 namespace Sawnet.Core;
 

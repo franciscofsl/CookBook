@@ -12,8 +12,8 @@ public class Recipe : AggregateRoot<RecipeId>
     public Recipe(RecipeId id, RecipeTitle title, RecipeDescription description)
         : base(id)
     {
-        Title = GuardClauses.NotNull(title, nameof(title));
-        Description = GuardClauses.NotNull(description, nameof(description));
+        Title = GuardClause.NotNull(title, nameof(title));
+        Description = GuardClause.NotNull(description, nameof(description));
 
         RaiseDomainEvent(new RecipeCreated(this));
     }
