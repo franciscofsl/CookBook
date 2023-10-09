@@ -1,5 +1,7 @@
 using CookBook.Blazor.Server;
+using CookBook.Infrastructure.Data;
 using Sawnet.Core.Modules;
+using Sawnet.Infrastructure.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,8 +10,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.AddSawnetApplication<CookBookApplication>();
+builder.Services.AddDbContext<IDbContext, CookBookDbContext>();
 
-//builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
@@ -32,11 +35,11 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-//app.UseSwagger();
-//app.UseSwaggerUI(c =>
-//{
-//c.SwaggerEndpoint("/swagger/v1/swagger.json", "Blazor API V1");
-//});
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+c.SwaggerEndpoint("/swagger/v1/swagger.json", "Blazor API V1");
+});
 
 app.MapRazorPages();
 app.MapControllers();

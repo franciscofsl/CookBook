@@ -4,20 +4,17 @@ public sealed class RecipeTitle : ValueObject
 {
     private RecipeTitle()
     {
-        
-    }
-    
-    private RecipeTitle(string title)
-    {
-        Title = GuardClause.NotNullOrEmpty(title, nameof(title));
     }
 
     public static RecipeTitle Create(string title)
     {
-        return new RecipeTitle(title);
+        return new RecipeTitle
+        {
+            Title = GuardClause.NotNullOrEmpty(title, nameof(title))
+        };
     }
 
-    public string Title { get; }
+    public string Title { get; private init; }
 
     public override IEnumerable<object> GetAtomicValues()
     {
@@ -26,5 +23,5 @@ public sealed class RecipeTitle : ValueObject
 
     public static implicit operator string(RecipeTitle title) => title.Title;
 
-    public static explicit operator RecipeTitle(string title) => new RecipeTitle(title);
+    public static explicit operator RecipeTitle(string title) => Create(title);
 }
