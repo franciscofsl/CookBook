@@ -36,7 +36,7 @@ public class CreateRecipeCommandTest
     }
 
     [Fact]
-    public async Task Should_Create_Recipe_As_Draft()
+    public async Task Should_Create_Recipe_As_Public()
     {
         var command = new CreateRecipeCommand
         {
@@ -48,6 +48,7 @@ public class CreateRecipeCommandTest
         };
 
         var commandHandler = new CreateRecipeCommandHandler(_recipesRepository);
-        await commandHandler.Handle(command);
+        var recipe = await commandHandler.Handle(command);
+        recipe.IsDraft.ShouldBeFalse();
     }
 }
