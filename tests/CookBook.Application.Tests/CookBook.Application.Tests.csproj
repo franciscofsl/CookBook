@@ -9,7 +9,9 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.11" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2"/>
+        <PackageReference Include="NSubstitute" Version="5.1.0" />
         <PackageReference Include="Shouldly" Version="4.2.1" />
         <PackageReference Include="xunit" Version="2.4.2"/>
         <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
@@ -28,8 +30,15 @@
       <ProjectReference Include="..\..\libs\src\Sawnet.Application\Sawnet.Application.csproj" />
       <ProjectReference Include="..\..\libs\src\Sawnet.Testing\Sawnet.Testing.csproj" />
       <ProjectReference Include="..\..\src\CookBook.Application\CookBook.Application.csproj" />
+      <ProjectReference Include="..\..\src\CookBook.Infrastructure\CookBook.Infrastructure.csproj" />
       <ProjectReference Include="..\CookBook.Test\CookBook.Test.csproj" />
     </ItemGroup>
+
+
+
+
+
+
 
 
 

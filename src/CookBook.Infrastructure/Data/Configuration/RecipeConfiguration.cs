@@ -1,4 +1,6 @@
-﻿using CookBook.Core.Recipes;
+﻿using System.Text.Json;
+using CookBook.Core.Recipes;
+using CookBook.Core.Recipes.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -14,6 +16,12 @@ public class RecipeConfiguration : IEntityTypeConfiguration<Recipe>
 
         builder.OwnsOne(_ => _.Title);
         builder.OwnsOne(_ => _.Description);
+        builder.OwnsOne(_ => _.PreparationTime);
+
+        builder.Property(_ => _.Ingredients)
+            .HasConversion(
+                v => JsonSerializer.Serialize(v.Lines, (JsonSerializerOptions)null),
+                v => JsonSerializer.Deserialize<Ingredients>(v, (JsonSerializerOptions)null));
 
         builder.Ignore(_ => _.Events);
     }

@@ -1,14 +1,12 @@
 ﻿using CookBook.Application.Recipes.Commands.CreateRecipe;
-using CookBook.Application.Recipes.Dtos;
+using CookBook.Shared.Recipes;
 using Microsoft.AspNetCore.Mvc;
 using Sawnet.Application.Cqrs.Commands;
 using Sawnet.Server;
 
 namespace CookBook.Blazor.Server.Endpoints.Recipes;
 
-public class CreateRecipe : BaseAsyncEndpoint
-    .WithRequest<CreateRecipeDto>
-    .WithResponse<RecipeDto>
+public class CreateRecipe : BaseAsyncEndpoint.WithRequest<CreateRecipeDto>.WithResponse<RecipeDto>
 {
     private readonly ICommandDispatcher _commandDispatcher;
 
@@ -18,7 +16,7 @@ public class CreateRecipe : BaseAsyncEndpoint
     }
 
     [HttpPost(ApiRoutes.Recipes)]
-    public override async Task<ActionResult<RecipeDto>> HandleAsync(CreateRecipeDto request,
+    public override async Task<ActionResult<RecipeDto>> HandleAsync([FromForm] CreateRecipeDto request,
         CancellationToken cancellationToken = default)
     {
         var recipe = await _commandDispatcher.Dispatch(new CreateRecipeCommand

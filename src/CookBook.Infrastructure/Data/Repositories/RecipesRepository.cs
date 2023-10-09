@@ -1,4 +1,5 @@
 ﻿using CookBook.Core.Recipes;
+using CookBook.Core.Recipes.ValueObjects;
 using Sawnet.Infrastructure.Data;
 
 namespace CookBook.Infrastructure.Data.Repositories;

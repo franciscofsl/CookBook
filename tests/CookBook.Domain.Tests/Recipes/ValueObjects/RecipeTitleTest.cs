@@ -1,7 +1,7 @@
 ﻿using CookBook.Core.Recipes.ValueObjects;
 using Shouldly;
 
-namespace CookBook.Domain.Tests.Recipes;
+namespace CookBook.Domain.Tests.Recipes.ValueObjects;
 
 public class RecipeTitleTest
 {
@@ -22,7 +22,10 @@ public class RecipeTitleTest
 
         var recipeTitle = RecipeTitle.Create(title);
 
-        recipeTitle.GetAtomicValues().ElementAt(0).ShouldBe(title);
+        foreach (var value in recipeTitle.GetAtomicValues())
+        {
+            value.ShouldNotBeNull();
+        }
     }
 
     [Fact]

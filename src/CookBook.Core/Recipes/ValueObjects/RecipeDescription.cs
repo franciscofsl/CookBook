@@ -6,17 +6,15 @@ public sealed class RecipeDescription : ValueObject
     {
     }
 
-    private RecipeDescription(string description)
+    public static RecipeDescription Create(string description)
     {
-        Description = GuardClause.NotNullOrEmpty(description, nameof(description));
+        return new RecipeDescription
+        {
+            Description = GuardClause.NotNullOrEmpty(description, nameof(description))
+        };
     }
 
-    public static RecipeDescription Create(string recipeDescription)
-    {
-        return new RecipeDescription(recipeDescription);
-    }
-
-    public string Description { get; }
+    public string Description { get; private init; }
 
     public override IEnumerable<object> GetAtomicValues()
     {
@@ -25,5 +23,5 @@ public sealed class RecipeDescription : ValueObject
 
     public static implicit operator string(RecipeDescription description) => description.Description;
 
-    public static explicit operator RecipeDescription(string description) => new RecipeDescription(description);
+    public static explicit operator RecipeDescription(string description) => Create(description);
 }

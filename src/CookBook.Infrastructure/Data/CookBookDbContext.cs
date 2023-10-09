@@ -1,5 +1,7 @@
 ﻿using System.Reflection;
+using System.Text.Json;
 using CookBook.Core.Recipes;
+using CookBook.Core.Recipes.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Sawnet.Core.BaseTypes;
 using Sawnet.Core.Events;
@@ -10,6 +12,10 @@ namespace CookBook.Infrastructure.Data;
 public class CookBookDbContext : DbContext, IDbContext
 {
     private readonly IDomainEventPublisher _publisher;
+
+    public CookBookDbContext()
+    {
+    }
 
     public CookBookDbContext(DbContextOptions options, IDomainEventPublisher publisher) : base(options)
     {

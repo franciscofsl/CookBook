@@ -1,4 +1,5 @@
-﻿using Sawnet.Core.Contracts;
+﻿using CookBook.Core.Recipes.ValueObjects;
+using Sawnet.Core.Contracts;
 
 namespace CookBook.Core.Recipes;
 

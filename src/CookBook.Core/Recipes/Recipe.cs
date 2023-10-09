@@ -14,11 +14,22 @@ public class Recipe : AggregateRoot<RecipeId>
     {
         Title = GuardClause.NotNull(title, nameof(title));
         Description = GuardClause.NotNull(description, nameof(description));
-
-        RaiseDomainEvent(new RecipeCreated(this));
+        IsDraft = true;
     }
 
     public RecipeTitle Title { get; private set; }
 
     public RecipeDescription Description { get; private set; }
+
+    public PreparationTime PreparationTime { get; set; }
+    
+    public Ingredients Ingredients { get; set; }
+
+    public bool IsDraft { get; private set; }
+
+    public void Publish()
+    {
+        IsDraft = false;
+        RaiseDomainEvent(new RecipePublished(this));
+    }
 }

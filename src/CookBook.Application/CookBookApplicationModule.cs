@@ -14,6 +14,6 @@ public class CookBookApplicationModule : SawnetModule
 {
     public override void ConfigureCustomServices(IServiceCollection services)
     {
-        services.AddTransient<IDomainEventHandler<RecipeCreated>, RecipeCreatedEventHandler>();
+        services.AddTransient<IDomainEventHandler<RecipePublished>, RecipePublishedEventHandler>();
     }
 }
