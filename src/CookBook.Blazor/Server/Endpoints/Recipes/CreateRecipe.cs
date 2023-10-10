@@ -19,16 +19,11 @@ public class CreateRecipe : BaseAsyncEndpoint.WithRequest<CreateRecipeDto>.WithR
     public override async Task<ActionResult<RecipeDto>> HandleAsync([FromForm] CreateRecipeDto request,
         CancellationToken cancellationToken = default)
     {
-        var recipe = await _commandDispatcher.Dispatch(new CreateRecipeCommand
-        {
-            Title = request.Title,
-            Description = request.Description
-        });
+        var recipe = await _commandDispatcher.Dispatch(new CreateRecipeCommand());
 
         return new RecipeDto
         {
-            Title = recipe.Title,
-            Description = recipe.Description
+            Id = recipe.Id
         };
     }
 }

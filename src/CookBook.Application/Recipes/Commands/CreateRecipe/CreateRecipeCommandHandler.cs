@@ -15,20 +15,8 @@ public class CreateRecipeCommandHandler : ICommandHandler<CreateRecipeCommand, R
 
     public async Task<Recipe> Handle(CreateRecipeCommand command, CancellationToken token = default)
     {
-        var title = RecipeTitle.Create(command.Title);
-        var description = RecipeDescription.Create(command.Description);
-        var recipe = new Recipe(RecipeId.Create(Guid.NewGuid()), title, description)
-        {
-            PreparationTime = PreparationTime.Create(command.Hours, command.Minutes)
-        };
-  
-        if (command.SaveAsPublic)
-        {
-            recipe.Publish();
-        }
-        
+        var recipe = new Recipe(RecipeId.Create(Guid.NewGuid()));
         await _recipesRepository.InsertAsync(recipe);
-
         return recipe;
     }
 }

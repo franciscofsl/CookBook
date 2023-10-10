@@ -42,6 +42,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sawnet.Core.Tests", "libs\t
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBook.Shared", "src\CookBook.Shared\CookBook.Shared.csproj", "{D7FB3DF0-BA8C-4907-A2E9-1C1BD97A1DF0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sawnet.Blazor", "libs\src\Sawnet.Blazor\Sawnet.Blazor.csproj", "{947387D0-0878-4B94-92CF-9F02D7A85AB1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -66,6 +68,7 @@ Global
 		{2FA392D2-DFDB-48C1-A4C0-BAC6E5C78CE9} = {8D1D6183-5150-4C5E-9793-9EEB05EC66D1}
 		{DF25E1C3-BCE7-4719-9991-D816B8F612D8} = {2FA392D2-DFDB-48C1-A4C0-BAC6E5C78CE9}
 		{D7FB3DF0-BA8C-4907-A2E9-1C1BD97A1DF0} = {1F0CB0B9-7F76-49E0-A95F-4644512E2585}
+		{947387D0-0878-4B94-92CF-9F02D7A85AB1} = {7238394A-B73B-4CD1-97E9-FBA376A5686A}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{705D8400-A88B-4629-B009-4BCFA9793AD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -132,5 +135,9 @@ Global
 		{D7FB3DF0-BA8C-4907-A2E9-1C1BD97A1DF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7FB3DF0-BA8C-4907-A2E9-1C1BD97A1DF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7FB3DF0-BA8C-4907-A2E9-1C1BD97A1DF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{947387D0-0878-4B94-92CF-9F02D7A85AB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{947387D0-0878-4B94-92CF-9F02D7A85AB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{947387D0-0878-4B94-92CF-9F02D7A85AB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{947387D0-0878-4B94-92CF-9F02D7A85AB1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
