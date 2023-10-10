@@ -18,8 +18,7 @@ namespace CookBook.Infrastructure.Data.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Title_Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description_Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PreparationTime_Hours = table.Column<int>(type: "int", nullable: true),
-                    PreparationTime_Minutes = table.Column<int>(type: "int", nullable: true),
+                    PreparationTime = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Ingredients = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsDraft = table.Column<bool>(type: "bit", nullable: false)
                 },

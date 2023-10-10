@@ -16,8 +16,13 @@ public class RecipeConfiguration : IEntityTypeConfiguration<Recipe>
 
         builder.OwnsOne(_ => _.Title);
         builder.OwnsOne(_ => _.Description);
-        builder.OwnsOne(_ => _.PreparationTime);
 
+        builder
+            .Property(e => e.PreparationTime)
+            .HasConversion(
+                preparationTime => JsonSerializer.Serialize(preparationTime, (JsonSerializerOptions)null),
+                jsonContent => JsonSerializer.Deserialize<PreparationTime>(jsonContent, (JsonSerializerOptions)null));
+ 
         builder.Property(_ => _.Ingredients)
             .HasConversion(
                 v => JsonSerializer.Serialize(v.Lines, (JsonSerializerOptions)null),

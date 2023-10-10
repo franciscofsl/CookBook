@@ -17,7 +17,7 @@ namespace CookBook.Infrastructure.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.11")
+                .HasAnnotation("ProductVersion", "7.0.12")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -33,6 +33,9 @@ namespace CookBook.Infrastructure.Data.Migrations
                     b.Property<bool>("IsDraft")
                         .HasColumnType("bit");
 
+                    b.Property<string>("PreparationTime")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Recipes");
@@ -40,25 +43,6 @@ namespace CookBook.Infrastructure.Data.Migrations
 
             modelBuilder.Entity("CookBook.Core.Recipes.Recipe", b =>
                 {
-                    b.OwnsOne("CookBook.Core.Recipes.ValueObjects.PreparationTime", "PreparationTime", b1 =>
-                        {
-                            b1.Property<Guid>("RecipeId")
-                                .HasColumnType("uniqueidentifier");
-
-                            b1.Property<int?>("Hours")
-                                .HasColumnType("int");
-
-                            b1.Property<int?>("Minutes")
-                                .HasColumnType("int");
-
-                            b1.HasKey("RecipeId");
-
-                            b1.ToTable("Recipes");
-
-                            b1.WithOwner()
-                                .HasForeignKey("RecipeId");
-                        });
-
                     b.OwnsOne("CookBook.Core.Recipes.ValueObjects.RecipeDescription", "Description", b1 =>
                         {
                             b1.Property<Guid>("RecipeId")
@@ -92,8 +76,6 @@ namespace CookBook.Infrastructure.Data.Migrations
                         });
 
                     b.Navigation("Description");
-
-                    b.Navigation("PreparationTime");
 
                     b.Navigation("Title");
                 });
