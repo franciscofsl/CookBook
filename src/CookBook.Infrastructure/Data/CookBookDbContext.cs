@@ -29,6 +29,14 @@ public class CookBookDbContext : DbContext, IDbContext
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
     }
 
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        if (!optionsBuilder.IsConfigured)
+        {
+            optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=Cookbook;User Id=sa;Password=SqlServer_Docker2023; TrustServerCertificate=True");
+        }
+    }
+
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new())
     {
         var result = await base.SaveChangesAsync(cancellationToken);
