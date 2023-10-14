@@ -8,7 +8,7 @@ using Swashbuckle.AspNetCore.Annotations;
 
 namespace CookBook.Blazor.Server.Endpoints.Recipes;
 
-public class Create : BaseAsyncEndpoint.WithRequest<CreateRecipeDto>.WithResponse<RecipeDto>
+public class Create : BaseAsyncEndpoint.WithoutRequest.WithResponse<RecipeDto>
 {
     private readonly ICommandDispatcher _commandDispatcher;
 
@@ -16,15 +16,14 @@ public class Create : BaseAsyncEndpoint.WithRequest<CreateRecipeDto>.WithRespons
     {
         _commandDispatcher = commandDispatcher;
     }
-    
+
     [SwaggerOperation(
         Summary = "Create recipe",
         Description = "Create a empty recipe",
         OperationId = "Recipe_Create",
         Tags = new[] { "Recipes" })]
     [HttpPost(ApiRoutes.Recipes)]
-    public override async Task<ActionResult<RecipeDto>> HandleAsync([FromForm] CreateRecipeDto recipeId,
-        CancellationToken cancellationToken = default)
+    public override async Task<ActionResult<RecipeDto>> HandleAsync(CancellationToken cancellationToken = default)
     {
         var recipe = await _commandDispatcher.Dispatch(new CreateRecipeCommand());
 

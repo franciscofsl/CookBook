@@ -16,7 +16,7 @@ public class RecipesClient
 
     public async Task<RecipeDto> CreateAsync()
     {
-        var response = await _client.PostAsJsonAsync(ApiRoutes.Recipes, new CreateRecipeDto());
+        var response = await _client.PostAsJsonAsync(ApiRoutes.Recipes, new RecipeDto());
 
         return await response.Content.ReadFromJsonAsync<RecipeDto>();
     }

@@ -1,5 +1,5 @@
+using CookBook.Shared;
 using Microsoft.AspNetCore.Mvc;
-using CookBook.Blazor.Shared;
 
 namespace CookBook.Blazor.Server.Controllers;
 

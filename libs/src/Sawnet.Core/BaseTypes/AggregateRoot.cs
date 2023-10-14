@@ -6,7 +6,7 @@ namespace Sawnet.Core.BaseTypes;
 public abstract class AggregateRoot<TKey> : IEntityWithDomainEvents
     where TKey : EntityId
 {
-    private List<IDomainEvent> _domainEvents = new();
+    private readonly List<IDomainEvent> _domainEvents = new();
 
     public TKey Id { get; }
 

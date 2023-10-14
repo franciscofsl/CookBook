@@ -3,7 +3,4 @@ using Sawnet.Application.Cqrs.Commands;
 
 namespace CookBook.Application.Recipes.Commands.CreateRecipe;
 
-public record CreateRecipeCommand : ICommandRequest<Recipe>
-{
-    
-}
+public record CreateRecipeCommand : ICommandRequest<Recipe>;

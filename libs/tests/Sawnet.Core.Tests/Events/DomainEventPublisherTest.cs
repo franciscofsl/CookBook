@@ -20,7 +20,7 @@ public class DomainEventPublisherTest
 
         var domainEventPublisher = serviceProvider.GetRequiredService<IDomainEventPublisher>();
 
-        await domainEventPublisher.Publish(new TestDomainEvent());
+        await Should.NotThrowAsync(async () => { await domainEventPublisher.Publish(new TestDomainEvent()); });
     }
 
     [Fact]

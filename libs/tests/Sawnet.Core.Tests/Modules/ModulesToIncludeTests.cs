@@ -11,7 +11,7 @@ public class ModulesToIncludeTests
     {
         var moduleType = typeof(TestSawnetModule);
 
-        var attribute = new ModulesToInclude(moduleType);
+        var attribute = new ModulesToIncludeAttribute(moduleType);
 
         attribute.Modules.ShouldNotBeNull();
         attribute.Modules.ShouldNotBeEmpty();
@@ -20,7 +20,7 @@ public class ModulesToIncludeTests
     [Fact]
     public void Constructor_With_No_Module_Types_Throws_InvalidOperationException()
     {
-        Should.Throw<InvalidOperationException>(() => new ModulesToInclude());
+        Should.Throw<InvalidOperationException>(() => new ModulesToIncludeAttribute());
     }
     
     [ModulesToInclude(typeof(TestSawnetModule))]
