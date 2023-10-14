@@ -11,7 +11,14 @@
     <ItemGroup>
       <ProjectReference Include="..\..\libs\src\Sawnet.Application\Sawnet.Application.csproj" />
       <ProjectReference Include="..\CookBook.Core\CookBook.Core.csproj" />
+      <ProjectReference Include="..\CookBook.Shared\CookBook.Shared.csproj" />
+
+
+
     </ItemGroup>
+
+
+
 
 
 

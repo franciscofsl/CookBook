@@ -1,4 +1,5 @@
 @inherits LayoutComponentBase
+ 
 <RadzenDialog/>
 <RadzenNotification/>
 <RadzenTooltip/>
@@ -13,8 +14,7 @@
             </RadzenColumn>
             <RadzenColumn Size="6">
                 <RadzenMenu Responsive="true" Style="float: right;">
-                    <RadzenMenuItem Text="Create" Path="Recipes" Icon="add_circle_outline"/>
-                    <RadzenMenuItem Text="Profile" Path="Profile" Icon="account_circle"/>
+                    <RadzenMenuItem Text="Publish" Path="Profile" Icon="account_circle"/>
                 </RadzenMenu>
             </RadzenColumn>
         </RadzenRow>
@@ -26,10 +26,5 @@
             </RadzenColumn>
         </RadzenRow>
     </RadzenBody>
-    <RadzenFooter>
-        <RadzenStack AlignItems="Radzen.AlignItems.Center" Orientation="Radzen.Orientation.Horizontal">
-            <RadzenText Text="BlazorAppRadzenMaterial v1.0.0" TextStyle="Radzen.Blazor.TextStyle.Caption" style="color: var(--rz-text-disabled-color);" TagName="Radzen.Blazor.TagName.P" TextAlign="Radzen.TextAlign.Center"/>
-            <RadzenText Text="Copyright Ⓒ 2023" TextStyle="Radzen.Blazor.TextStyle.Caption" Style="color: var(--rz-text-disabled-color);" TagName="Radzen.Blazor.TagName.P" TextAlign="Radzen.TextAlign.Center"/>
-        </RadzenStack>
-    </RadzenFooter>
+   
 </RadzenLayout>
