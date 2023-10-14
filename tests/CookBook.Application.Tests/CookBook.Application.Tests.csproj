@@ -24,8 +24,6 @@
         </PackageReference>
     </ItemGroup>
 
-
-
     <ItemGroup>
       <ProjectReference Include="..\..\libs\src\Sawnet.Application\Sawnet.Application.csproj" />
       <ProjectReference Include="..\..\libs\src\Sawnet.Testing\Sawnet.Testing.csproj" />
@@ -33,14 +31,8 @@
       <ProjectReference Include="..\..\src\CookBook.Infrastructure\CookBook.Infrastructure.csproj" />
       <ProjectReference Include="..\CookBook.Test\CookBook.Test.csproj" />
     </ItemGroup>
-
-
-
-
-
-
-
-
-
-
+    
+    <ItemGroup>
+        <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute" />
+    </ItemGroup>
 </Project>

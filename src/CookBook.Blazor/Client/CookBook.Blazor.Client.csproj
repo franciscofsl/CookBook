@@ -12,7 +12,6 @@
         <PackageReference Include="Radzen.Blazor" Version="4.17.1" />
     </ItemGroup>
 
-
     <ItemGroup>
       <ProjectReference Include="..\..\..\libs\src\Sawnet.Blazor\Sawnet.Blazor.csproj" />
       <ProjectReference Include="..\..\CookBook.Shared\CookBook.Shared.csproj" />
@@ -32,16 +31,9 @@
       <_ContentIncludedByDefault Remove="wwwroot\css\open-iconic\font\fonts\open-iconic.woff" />
       <_ContentIncludedByDefault Remove="wwwroot\css\open-iconic\ICON-LICENSE" />
       <_ContentIncludedByDefault Remove="wwwroot\css\open-iconic\README.md" />
-
-
-
-
     </ItemGroup>
 
-
-
-
-
-
-
+    <ItemGroup>
+        <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute" />
+    </ItemGroup>
 </Project>
