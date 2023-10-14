@@ -42,7 +42,8 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"franciscofsl_CookBook" /o:"franciscofsl" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.dotcover.reportsPaths=dotCover.Output.html
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"franciscofsl_CookBook" /o:"franciscofsl" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.dotcover.reportsPaths=dotCover.Output.html /d:sonar.coverage.exclusions="src/CookBook.Blazor"
+            
           dotnet tool install --global JetBrains.dotCover.GlobalTool
           dotnet clean
           dotnet build --no-incremental
