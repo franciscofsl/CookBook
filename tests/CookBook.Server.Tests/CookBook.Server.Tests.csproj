@@ -28,7 +28,7 @@
       <ProjectReference Include="..\..\src\CookBook.Blazor\Server\CookBook.Blazor.Server.csproj" />
     </ItemGroup>
     
-<PropertyGroup>
-  <ExcludeFromCodeCoverage>true</ExcludeFromCodeCoverage>
-</PropertyGroup>
+    <ItemGroup>
+        <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute" />
+    </ItemGroup>
 </Project>

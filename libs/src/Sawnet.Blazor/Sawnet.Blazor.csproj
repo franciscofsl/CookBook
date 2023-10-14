@@ -16,7 +16,7 @@
         <PackageReference Include="Radzen.Blazor" Version="4.17.1" />
     </ItemGroup>
     
-<PropertyGroup>
-  <ExcludeFromCodeCoverage>true</ExcludeFromCodeCoverage>
-</PropertyGroup>
+    <ItemGroup>
+        <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute" />
+    </ItemGroup>
 </Project>
