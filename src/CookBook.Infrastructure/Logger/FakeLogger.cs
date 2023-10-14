@@ -4,7 +4,7 @@ namespace CookBook.Infrastructure.Logger;
 
 public class FakeLogger : IFakeLogger
 {
-    private List<string> _logs = new();
+    private readonly List<string> _logs = new();
 
     public Task LogAsync(string content)
     {

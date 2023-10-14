@@ -12,18 +12,13 @@
       <ProjectReference Include="..\CookBook.Application\CookBook.Application.csproj" />
       <ProjectReference Include="..\CookBook.Core\CookBook.Core.csproj" />
     </ItemGroup>
-
-
+    
     <ItemGroup>
       <Reference Include="Microsoft.EntityFrameworkCore.InMemory">
         <HintPath>..\..\..\.nuget\packages\microsoft.entityframeworkcore.inmemory\7.0.11\lib\net6.0\Microsoft.EntityFrameworkCore.InMemory.dll</HintPath>
       </Reference>
     </ItemGroup>
-
-
-
-
-
+    
     <ItemGroup>
       <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.12">
         <PrivateAssets>all</PrivateAssets>
@@ -31,14 +26,12 @@
       </PackageReference>
       <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.12" />
     </ItemGroup>
-
-
-
-
-
+    
     <ItemGroup>
       <Folder Include="Data\Migrations\" />
     </ItemGroup>
 
-
+    <ItemGroup>
+        <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute" />
+    </ItemGroup>
 </Project>

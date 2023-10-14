@@ -2,5 +2,5 @@
 
 public interface IDomainEventPublisher
 {
-    Task Publish(IDomainEvent commandRequest);
+    Task Publish(IDomainEvent domainEvent);
 }

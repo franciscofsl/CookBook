@@ -1,11 +1,11 @@
 namespace Sawnet.Core.Modules;
 
 [AttributeUsage(AttributeTargets.Class)]
-public class ModulesToInclude : Attribute
+public class ModulesToIncludeAttribute : Attribute
 {
     private readonly List<SawnetModule> _modules = new List<SawnetModule>();
 
-    public ModulesToInclude(params Type[] modulesTypes)
+    public ModulesToIncludeAttribute(params Type[] modulesTypes)
     {
         if (modulesTypes is null || modulesTypes.Any() == false)
             throw new InvalidOperationException("No module has been configured in the \"ModulesToInclude\" attribute");
