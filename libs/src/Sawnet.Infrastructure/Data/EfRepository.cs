@@ -21,8 +21,8 @@ public class EfRepository<TAggregateRoot, TEntityId>
         var query = await GetQueryableAsync();
 
         return await query.FirstOrDefaultAsync(_ => _.Id == id);
-    }
-    
+    } 
+
     public async Task InsertAsync(TAggregateRoot entity, bool save = true)
     {
         await DbContext.Set<TAggregateRoot>().AddAsync(entity);

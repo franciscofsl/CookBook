@@ -33,7 +33,7 @@ public class CookBookDbContext : DbContext, IDbContext
     {
         if (!optionsBuilder.IsConfigured)
         {
-            optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=Cookbook;User Id=sa;Password=SqlServer_Docker2023; TrustServerCertificate=True");
+            optionsBuilder.UseSqlServer("Server=localhost,1434;Database=CookBook;User=sa;Password=SqlServer_Docker2023;MultipleActiveResultSets=true;TrustServerCertificate=True;");
         }
     }
 

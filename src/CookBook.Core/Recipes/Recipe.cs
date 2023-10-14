@@ -13,6 +13,8 @@ public class Recipe : AggregateRoot<RecipeId>
         : base(id)
     {
         IsDraft = true;
+        PreparationTime = PreparationTime.Empty;
+        Ingredients = Ingredients.Empty;
     }
 
     public RecipeTitle Title { get; private set; }

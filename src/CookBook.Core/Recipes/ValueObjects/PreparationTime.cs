@@ -7,6 +7,8 @@ public class PreparationTime : ValueObject
     private const int MinTimeValue = 0;
     private const int MaxTimeValue = 59;
 
+    public static PreparationTime Empty = new ();
+
     private PreparationTime()
     {
     }
