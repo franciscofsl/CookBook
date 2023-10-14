@@ -42,10 +42,9 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"franciscofsl_CookBook" /o:"franciscofsl" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.dotcover.reportsPaths=dotCover.Output.html /d:sonar.coverage.exclusions="src/CookBook.Blazor"
-            
-          dotnet tool install --global JetBrains.dotCover.GlobalTool
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"franciscofsl_CookBook" /o:"franciscofsl" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.dotcover.reportsPaths=dotCover.Output.html /d:sonar.cs.opencover.reportsPaths=coverage.xml
+          dotnet tool install --global coverlet.console
           dotnet clean
           dotnet build --no-incremental
-          dotnet dotcover test --dcReportType=HTML
+          coverlet .\tests\CookBook.*.Tests\bin\Debug\net7.0\CookBook.*.Tests.dll --target "dotnet" --targetargs "test --no-build" -f=opencover -o="coverage.xml"
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
