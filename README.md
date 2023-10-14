@@ -1,5 +1,11 @@
 ### 🍳 CookPad Replica in C# with Domain-Driven Design (DDD) 📚
 
+## Code Quality
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=franciscofsl_CookBook&metric=coverage)](https://sonarcloud.io/summary/new_code?id=franciscofsl_CookBook)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=franciscofsl_CookBook&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=franciscofsl_CookBook)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=franciscofsl_CookBook&metric=bugs)](https://sonarcloud.io/summary/new_code?id=franciscofsl_CookBook)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=franciscofsl_CookBook&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=franciscofsl_CookBook)
+
 ## Project Description
 
 CookBook is a recipe management application implemented in C# using the principles of Domain-Driven Design (DDD). This project aims to replicate the basic functionality of the popular recipe platform, CookPad.
