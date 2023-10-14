@@ -1,0 +1,27 @@
+﻿@page "/Edit-Recipe/{RecipeId:guid}"
+@using CookBook.Blazor.Client.Clients.Recipes
+@using CookBook.Shared.Recipes
+@layout RecipeLayout
+
+<RadzenTemplateForm Data="@_recipe" TItem="RecipeDto">
+
+</RadzenTemplateForm>
+
+@code {
+
+    private RecipeDto _recipe;
+
+    [Parameter]
+    public Guid RecipeId { get; set; }
+
+    [Inject]
+    private RecipesClient Client { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        _recipe = await Client.GetAsync(RecipeId);
+        RecipeLayout.CurrentRecipe = _recipe;
+    }
+
+}

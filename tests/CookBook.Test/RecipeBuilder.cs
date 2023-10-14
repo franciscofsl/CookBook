@@ -31,9 +31,7 @@ public class RecipeBuilder
 
     public Recipe Build()
     {
-        var id = RecipeId.Create(Guid.NewGuid());
-        var title = RecipeTitle.Create("Test Title");
-        var description = RecipeDescription.Create("Recipe Description");
-        return new Recipe(id, _title ?? title, _description ?? description);
+        var id = RecipeId.Create(Guid.NewGuid()); 
+        return new Recipe(id);
     }
 }

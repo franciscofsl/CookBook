@@ -7,7 +7,9 @@ public class Ingredients : ValueObject
 {
     private readonly List<IngredientLine> _lines = new();
 
-    public Ingredients()
+    public static Ingredients Empty => new();
+
+    private Ingredients()
     {
     }
 

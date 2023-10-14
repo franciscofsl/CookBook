@@ -12,7 +12,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddSawnetApplication<CookBookApplication>();
 builder.Services.AddDbContext<IDbContext, CookBookDbContext>();
 
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(_ => { _.EnableAnnotations(); });
 
 var app = builder.Build();
 
@@ -36,10 +36,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseSwagger();
-app.UseSwaggerUI(c =>
-{
-c.SwaggerEndpoint("/swagger/v1/swagger.json", "Blazor API V1");
-});
+app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "Blazor API V1"); });
 
 app.MapRazorPages();
 app.MapControllers();

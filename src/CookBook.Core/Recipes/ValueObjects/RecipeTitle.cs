@@ -21,7 +21,7 @@ public sealed class RecipeTitle : ValueObject
         yield return Title;
     }
 
-    public static implicit operator string(RecipeTitle title) => title.Title;
+    public static implicit operator string(RecipeTitle title) => title?.Title;
 
     public static explicit operator RecipeTitle(string title) => Create(title);
 }

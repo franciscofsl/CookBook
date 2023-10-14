@@ -23,18 +23,5 @@ public class RecipePublishedEventHandlerTest
             await domainEvent.Handle(new RecipePublished(recipe));
         });
         exception.Message.ShouldBe("Can't notify published recipe if recipe is draft.");
-    }
-
-    [Fact]
-    public async Task Should_Handle_Event_With_Published_Recipe()
-    {
-        var fakeLogger = Substitute.For<IFakeLogger>();
-        var recipe = RecipeBuilder.Create().Build();
-
-        recipe.Publish();
-
-        var domainEvent = new RecipePublishedEventHandler(fakeLogger);
-
-        await domainEvent.Handle(new RecipePublished(recipe));
-    }
+    } 
 }

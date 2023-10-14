@@ -1,0 +1,33 @@
+﻿@page "/Recipes"
+@using CookBook.Blazor.Client.Clients.Recipes
+
+@layout MainLayout
+
+<RadzenPanel Style="display: flex; justify-content: center; align-items: center; text-align: center;">
+    <ChildContent>
+        <RadzenStack>
+            <RadzenButton Text="Recipe" ButtonStyle="ButtonStyle.Primary" Style="width: 150px;" Click="OpenEditRecipe"/>
+        </RadzenStack>
+    </ChildContent>
+</RadzenPanel>
+
+@code {
+
+    [Inject]
+    private NavigationManager NavigationManager { get; set; }
+
+    [Inject]
+    private RecipesClient RecipesClient { get; set; }
+
+    private async Task OpenEditRecipe()
+    {
+        var recipe = await RecipesClient.CreateAsync();
+        NavigateToRecipe(recipe.Id);
+    }
+
+    private void NavigateToRecipe(Guid recipeId)
+    {
+        NavigationManager.NavigateTo($"Edit-Recipe/{recipeId}");
+    }
+
+}

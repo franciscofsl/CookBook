@@ -9,12 +9,12 @@ public class Recipe : AggregateRoot<RecipeId>
     {
     }
 
-    public Recipe(RecipeId id, RecipeTitle title, RecipeDescription description)
+    public Recipe(RecipeId id)
         : base(id)
     {
-        Title = GuardClause.NotNull(title, nameof(title));
-        Description = GuardClause.NotNull(description, nameof(description));
         IsDraft = true;
+        PreparationTime = PreparationTime.Empty;
+        Ingredients = Ingredients.Empty;
     }
 
     public RecipeTitle Title { get; private set; }
