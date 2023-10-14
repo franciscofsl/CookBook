@@ -10,7 +10,7 @@
       <ProjectReference Include="..\..\src\CookBook.Core\CookBook.Core.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-        <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute" />
-    </ItemGroup>
+<PropertyGroup>
+  <ExcludeFromCodeCoverage>true</ExcludeFromCodeCoverage>
+</PropertyGroup>
 </Project>
