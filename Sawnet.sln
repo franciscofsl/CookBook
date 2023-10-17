@@ -16,7 +16,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBook.Blazor.Client", "s
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBook.Application.Tests", "tests\CookBook.Application.Tests\CookBook.Application.Tests.csproj", "{7E25A1A6-2F50-4E47-B71F-99889F0E2C56}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBook.Domain.Tests", "tests\CookBook.Domain.Tests\CookBook.Domain.Tests.csproj", "{714E9751-FF32-435D-BE28-E73BEFD19F25}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBook.Core.Tests", "tests\CookBook.Core.Tests\CookBook.Core.Tests.csproj", "{714E9751-FF32-435D-BE28-E73BEFD19F25}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBook.Server.Tests", "tests\CookBook.Server.Tests\CookBook.Server.Tests.csproj", "{74B071A4-9F39-478A-B24F-AD797AE8CC6E}"
 EndProject

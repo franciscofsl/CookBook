@@ -29,8 +29,6 @@
       <ProjectReference Include="..\CookBook.Test\CookBook.Test.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-        <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute" />
-    </ItemGroup>
+    
 
 </Project>
