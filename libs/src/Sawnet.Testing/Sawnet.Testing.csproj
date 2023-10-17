@@ -15,7 +15,5 @@
       <PackageReference Include="Shouldly" Version="4.2.1" />
     </ItemGroup>
     
-    <ItemGroup>
-        <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute" />
-    </ItemGroup>
+    
 </Project>

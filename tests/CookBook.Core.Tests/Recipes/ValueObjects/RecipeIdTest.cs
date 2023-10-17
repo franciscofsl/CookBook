@@ -1,7 +1,7 @@
 ﻿using CookBook.Core.Recipes.ValueObjects;
 using Shouldly;
 
-namespace CookBook.Domain.Tests.Recipes.ValueObjects;
+namespace CookBook.Core.Tests.Recipes.ValueObjects;
 
 public class RecipeIdTest
 {

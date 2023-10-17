@@ -2,7 +2,7 @@
 using Sawnet.Testing.Extensions;
 using Shouldly;
 
-namespace CookBook.Domain.Tests.Recipes.ValueObjects;
+namespace CookBook.Core.Tests.Recipes.ValueObjects;
 
 public class RecipeDescriptionTest
 {

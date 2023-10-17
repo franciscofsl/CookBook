@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+    <DataCollectionRunSettings>
+        <DataCollectors>
+            <DataCollector friendlyName="Code Coverage" uri="datacollector://Microsoft/CodeCoverage/2.0">
+                <Configuration>
+                    <CodeCoverage>
+                        <ModulePaths>
+                            <Include>
+                                <ModulePath>.*CookBook\.Infrastructure\.dll</ModulePath> 
+                                <ModulePath>.*CookBook\.Core\.dll</ModulePath> 
+                                <ModulePath>.*CookBook\.Application\.dll</ModulePath> 
+                                <ModulePath>.*Sawnet\.Infrastructure\.dll</ModulePath> 
+                                <ModulePath>.*Sawnet\.Core\.dll</ModulePath> 
+                                <ModulePath>.*Sawnet\.Application\.dll</ModulePath> 
+                            </Include>
+                            <Exclude>
+                                <ModulePath>.*Tests\.dll</ModulePath>
+                            </Exclude>
+                        </ModulePaths>
+                    </CodeCoverage>
+                </Configuration>
+            </DataCollector>
+        </DataCollectors>
+    </DataCollectionRunSettings>
+</RunSettings>
