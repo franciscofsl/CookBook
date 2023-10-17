@@ -1,9 +1,8 @@
-﻿using CookBook.Core.Recipes.Enums;
-using CookBook.Core.Recipes.ValueObjects;
+﻿using CookBook.Core.Recipes.ValueObjects;
 
 namespace CookBook.Core.Recipes;
 
-public class Ingredients : ValueObject
+public record Ingredients : ValueObject
 {
     private readonly List<IngredientLine> _lines = new();
 
@@ -31,7 +30,7 @@ public class Ingredients : ValueObject
 
     private int GetNextOrder() => _lines.Count + 1;
 
-    public override IEnumerable<object> GetAtomicValues()
+    protected override IEnumerable<object> GetAtomicValues()
     {
         return _lines;
     }

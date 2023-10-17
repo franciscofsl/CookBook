@@ -2,7 +2,7 @@
 
 namespace CookBook.Core.Recipes.ValueObjects;
 
-public class PreparationTime : ValueObject
+public record PreparationTime : ValueObject
 {
     private const int MinTimeValue = 0;
     private const int MaxTimeValue = 59;
@@ -31,7 +31,7 @@ public class PreparationTime : ValueObject
 
     public int? Minutes { get; private init; }
 
-    public override IEnumerable<object> GetAtomicValues()
+    protected override IEnumerable<object> GetAtomicValues()
     {
         yield return Hours;
         yield return Minutes;

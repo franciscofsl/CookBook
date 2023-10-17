@@ -2,7 +2,7 @@
 
 namespace CookBook.Core.Recipes.ValueObjects;
 
-public sealed class IngredientLine : ValueObject
+public sealed record IngredientLine : ValueObject
 {
     private IngredientLine()
     {
@@ -34,7 +34,7 @@ public sealed class IngredientLine : ValueObject
 
     public int Order { get; private init; }
 
-    public override IEnumerable<object> GetAtomicValues()
+    protected override IEnumerable<object> GetAtomicValues()
     {
         yield return Type;
         yield return Description;

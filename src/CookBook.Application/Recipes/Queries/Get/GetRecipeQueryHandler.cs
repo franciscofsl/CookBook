@@ -5,18 +5,18 @@ using Sawnet.Application.Cqrs.Queries;
 
 namespace CookBook.Application.Recipes.Queries.Get;
 
-public class GetRecipeCommandHandler : IQueryHandler<GetRecipeCommand, RecipeDto>
+public class GetRecipeQueryHandler : IQueryHandler<GetRecipeQuery, RecipeDto>
 {
     private readonly IRecipesRepository _recipesRepository;
 
-    public GetRecipeCommandHandler(IRecipesRepository recipesRepository)
+    public GetRecipeQueryHandler(IRecipesRepository recipesRepository)
     {
         _recipesRepository = recipesRepository;
     }
 
-    public async Task<RecipeDto> Handle(GetRecipeCommand command, CancellationToken cancellationToken = default)
+    public async Task<RecipeDto> Handle(GetRecipeQuery query, CancellationToken cancellationToken = default)
     {
-        var recipeId = RecipeId.Create(command.RecipeId);
+        var recipeId = (RecipeId)query.RecipeId;
         var recipe = await _recipesRepository.GetAsync(recipeId);
 
         return new RecipeDto

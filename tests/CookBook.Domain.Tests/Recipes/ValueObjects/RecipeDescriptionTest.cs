@@ -1,4 +1,5 @@
 ﻿using CookBook.Core.Recipes.ValueObjects;
+using Sawnet.Testing.Extensions;
 using Shouldly;
 
 namespace CookBook.Domain.Tests.Recipes.ValueObjects;
@@ -22,7 +23,7 @@ public class RecipeDescriptionTest
 
         var recipeDescription = RecipeDescription.Create(description);
 
-        foreach (var value in recipeDescription.GetAtomicValues())
+        foreach (var value in recipeDescription.InvokeGetAtomicValues())
         {
             value.ShouldNotBeNull();
         }

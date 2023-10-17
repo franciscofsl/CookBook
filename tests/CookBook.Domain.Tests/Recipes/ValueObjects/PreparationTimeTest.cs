@@ -1,4 +1,5 @@
 ﻿using CookBook.Core.Recipes.ValueObjects;
+using Sawnet.Testing.Extensions;
 using Shouldly;
 
 namespace CookBook.Domain.Tests.Recipes.ValueObjects;
@@ -38,7 +39,7 @@ public class PreparationTimeTest
     public void Should_Get_Atomic_Values()
     {
         var preparationTime = PreparationTime.Create(1, 5);
-        foreach (var value in preparationTime.GetAtomicValues())
+        foreach (var value in preparationTime.InvokeGetAtomicValues())
         {
             value.ShouldNotBeNull();
         }

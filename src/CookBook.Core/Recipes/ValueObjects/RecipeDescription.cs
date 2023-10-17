@@ -1,6 +1,6 @@
 ﻿namespace CookBook.Core.Recipes.ValueObjects;
 
-public sealed class RecipeDescription : ValueObject
+public sealed record RecipeDescription : ValueObject
 {
     private RecipeDescription()
     {
@@ -16,7 +16,7 @@ public sealed class RecipeDescription : ValueObject
 
     public string Description { get; private init; }
 
-    public override IEnumerable<object> GetAtomicValues()
+    protected override IEnumerable<object> GetAtomicValues()
     {
         yield return Description;
     }

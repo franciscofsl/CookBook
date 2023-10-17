@@ -28,7 +28,7 @@ public class Get : BaseAsyncEndpoint
     public override async Task<ActionResult<RecipeDto>> HandleAsync([FromQuery] Guid recipeId,
         CancellationToken cancellationToken = default)
     {
-        var recipeDto = await _queryDispatcher.Dispatch(new GetRecipeCommand(recipeId));
+        var recipeDto = await _queryDispatcher.Dispatch(new GetRecipeQuery(recipeId));
 
         return Ok(recipeDto);
     }

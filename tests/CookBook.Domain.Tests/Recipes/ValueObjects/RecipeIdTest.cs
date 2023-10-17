@@ -10,7 +10,7 @@ public class RecipeIdTest
     {
         var id = Guid.NewGuid();
 
-        var recipeId = RecipeId.Create(id);
+        var recipeId = (RecipeId)id;
 
         recipeId.ShouldNotBeNull();
         ((Guid)recipeId).ShouldBe(id);

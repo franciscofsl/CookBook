@@ -13,7 +13,7 @@ public class GetMyRecipesCommandHandler : IQueryHandler<GetMyRecipesCommand, IRe
         _recipesRepository = recipesRepository;
     }
 
-    public async Task<IReadOnlyList<RecipeForListDto>> Handle(GetMyRecipesCommand command,
+    public async Task<IReadOnlyList<RecipeForListDto>> Handle(GetMyRecipesCommand query,
         CancellationToken cancellationToken = default)
     {
         var myRecipes = await _recipesRepository.GetMyRecipesAsync();
