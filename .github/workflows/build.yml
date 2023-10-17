@@ -42,7 +42,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"franciscofsl_CookBook" /o:"franciscofsl" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.coverage.exclusions=**/src/CookBook.Blazor/** /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"franciscofsl_CookBook" /o:"franciscofsl" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.coverage.exclusions=**/src/CookBook.Blazor/**,**/src/CookBook.Infrastructure/**,**/src/CookBook.Shared/**,**/tests/**,**/libs/src/Sawnet.Blazor/**,**/libs/src/Sawnet.Infrastructure/**,**/libs/src/Sawnet.Server/**,**/libs/src/Sawnet.Testing/**,**/libs/tests/** /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
           dotnet tool install --global dotnet-coverage
           dotnet clean
           dotnet build --no-incremental
