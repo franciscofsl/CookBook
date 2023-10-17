@@ -1,6 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Sawnet.Core.Events;
-using Shouldly;
+﻿using Sawnet.Core.Events;
+
 
 namespace Sawnet.Core.Tests;
 
@@ -18,6 +17,6 @@ public class DddModuleTest
 
         var domainEventPublisherIsValidType = domainEventPublisher is DomainEventPublisher;
 
-        domainEventPublisherIsValidType.ShouldBeTrue();
+        domainEventPublisherIsValidType.Should().BeTrue();
     }
 }

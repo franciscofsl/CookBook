@@ -1,8 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Sawnet.Core.Modules;
-using Shouldly;
-
-namespace Sawnet.Core.Tests.Modules;
+﻿namespace Sawnet.Core.Tests.Modules;
 
 public class SawnetModuleTest
 {
@@ -11,7 +7,10 @@ public class SawnetModuleTest
     {
         var module = new TestSawnetModule();
 
-        Should.NotThrow(() => module.ConfigureCustomServices(new ServiceCollection()));
+        FluentActions
+            .Invoking(() => module.ConfigureCustomServices(new ServiceCollection()))
+            .Should()
+            .NotThrow();
     }
 
     [Fact]
@@ -19,7 +18,10 @@ public class SawnetModuleTest
     {
         var module = new TestSawnetModule();
 
-        Should.NotThrow(() => module.ConfigureServices(new ServiceCollection()));
+        FluentActions
+            .Invoking(() => module.ConfigureServices(new ServiceCollection()))
+            .Should()
+            .NotThrow();
     }
 
     [Fact]
@@ -29,8 +31,8 @@ public class SawnetModuleTest
 
         var modules = module.GetModules();
 
-        modules.ShouldNotBeNull();
-        modules.ShouldNotBeEmpty();
+        modules.Should().NotBeNull();
+        modules.Should().NotBeEmpty();
     }
 
     [Fact]
@@ -38,7 +40,10 @@ public class SawnetModuleTest
     {
         var module = new TestSawnetModuleWithAttribute();
 
-        Should.NotThrow(() => module.ConfigureServices(new ServiceCollection()));
+        FluentActions
+            .Invoking(() => module.ConfigureServices(new ServiceCollection()))
+            .Should()
+            .NotThrow();
     }
 
     [Fact]
@@ -48,7 +53,7 @@ public class SawnetModuleTest
 
         var modules = module.GetModules();
 
-        modules.ShouldBeEmpty();
+        modules.Should().BeEmpty();
     }
 
     private class TestSawnetModule : SawnetModule

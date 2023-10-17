@@ -1,5 +1,5 @@
 ﻿using Sawnet.Core.GuardClauses;
-using Shouldly;
+
 
 namespace Sawnet.Core.Tests.GuardClauses;
 
@@ -14,7 +14,7 @@ public class GuardClauseCheckNullableRangeTest
 
         var result = GuardClause.CheckNullableRange(value, minValue, maxValue);
 
-        result.ShouldBe(value);
+        result.Should().Be(value);
     }
 
     [Fact]
@@ -26,7 +26,7 @@ public class GuardClauseCheckNullableRangeTest
 
         var result = GuardClause.CheckNullableRange(value, minValue, maxValue);
 
-        result.ShouldBeNull();
+        result.Should().BeNull();
     }
 
     [Fact]
@@ -36,8 +36,10 @@ public class GuardClauseCheckNullableRangeTest
         var minValue = 1;
         var maxValue = 10;
 
-        Should.Throw<ArgumentOutOfRangeException>(() => GuardClause.CheckNullableRange(value, minValue, maxValue))
-            .Message.ShouldContain($"The number must be between {minValue} and {maxValue}.");
+        FluentActions.Invoking(() => GuardClause.CheckNullableRange(value, minValue, maxValue))
+            .Should()
+            .ThrowExactly<ArgumentOutOfRangeException>()
+            .WithMessage($"The number must be between {minValue} and {maxValue}. (Parameter 'value')");
     }
 
     [Fact]
@@ -49,7 +51,7 @@ public class GuardClauseCheckNullableRangeTest
 
         var result = GuardClause.CheckNullableRange(value, minValue, maxValue);
 
-        result.ShouldBe(value);
+        result.Should().Be(value);
     }
 
     [Fact]
@@ -59,7 +61,9 @@ public class GuardClauseCheckNullableRangeTest
         var minValue = 10;
         var maxValue = 5;
 
-        Should.Throw<ArgumentException>(() => GuardClause.CheckNullableRange(value, minValue, maxValue))
-            .Message.ShouldContain("The number must be between 10 and 5. (Parameter 'value')");
+        FluentActions.Invoking(() => GuardClause.CheckNullableRange(value, minValue, maxValue))
+            .Should()
+            .ThrowExactly<ArgumentOutOfRangeException>()
+            .WithMessage("The number must be between 10 and 5. (Parameter 'value')");
     }
 }

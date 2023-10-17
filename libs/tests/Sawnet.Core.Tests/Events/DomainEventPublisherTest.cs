@@ -1,6 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Sawnet.Core.Events;
-using Shouldly;
+﻿using Sawnet.Core.Events;
+
 
 namespace Sawnet.Core.Tests.Events;
 
@@ -19,8 +18,10 @@ public class DomainEventPublisherTest
         var serviceProvider = serviceCollection.BuildServiceProvider();
 
         var domainEventPublisher = serviceProvider.GetRequiredService<IDomainEventPublisher>();
-
-        await Should.NotThrowAsync(async () => { await domainEventPublisher.Publish(new TestDomainEvent()); });
+        // Act and Assert
+        await FluentActions.Awaiting(async () => await domainEventPublisher.Publish(new TestDomainEvent()))
+            .Should()
+            .NotThrowAsync();
     }
 
     [Fact]
@@ -40,7 +41,7 @@ public class DomainEventPublisherTest
             await domainEventPublisher.Publish(new TestDomainEvent(true));
         });
 
-        exception.Message.ShouldBe(ExceptionMessage);
+        exception.Message.Should().Be(ExceptionMessage);
     }
 
     public record TestDomainEvent(bool ThrowException = false) : IDomainEvent;

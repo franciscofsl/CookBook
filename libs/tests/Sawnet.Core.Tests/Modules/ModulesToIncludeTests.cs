@@ -1,8 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Sawnet.Core.Modules;
-using Shouldly;
-
-namespace Sawnet.Core.Tests.Modules;
+﻿namespace Sawnet.Core.Tests.Modules;
 
 public class ModulesToIncludeTests
 {
@@ -13,16 +9,18 @@ public class ModulesToIncludeTests
 
         var attribute = new ModulesToIncludeAttribute(moduleType);
 
-        attribute.Modules.ShouldNotBeNull();
-        attribute.Modules.ShouldNotBeEmpty();
+        attribute.Modules.Should().NotBeNull();
+        attribute.Modules.Should().NotBeEmpty();
     }
 
     [Fact]
     public void Constructor_With_No_Module_Types_Throws_InvalidOperationException()
     {
-        Should.Throw<InvalidOperationException>(() => new ModulesToIncludeAttribute());
+        FluentActions.Invoking(() => new ModulesToIncludeAttribute())
+            .Should()
+            .Throw<InvalidOperationException>();
     }
-    
+
     [ModulesToInclude(typeof(TestSawnetModule))]
     private class TestSawnetModule : SawnetModule
     {

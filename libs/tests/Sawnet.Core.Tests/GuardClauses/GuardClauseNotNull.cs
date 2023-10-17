@@ -1,5 +1,5 @@
 ﻿using Sawnet.Core.GuardClauses;
-using Shouldly;
+
 
 namespace Sawnet.Core.Tests.GuardClauses;
 
@@ -12,15 +12,18 @@ public class GuardClauseNotNull
 
         var value = GuardClause.NotNull(anyStringObject, nameof(anyStringObject));
 
-        value.ShouldBe(anyStringObject);
+        value.Should().Be(anyStringObject);
     }
 
     [Fact]
     public void Should_Throw_Exception_With_Null_Object()
     {
         string anyStringObject = null;
-        
-        Should.Throw<ArgumentException>(() => GuardClause.NotNull(anyStringObject, nameof(anyStringObject)))
-            .Message.ShouldBe("Value cannot be null. (Parameter 'anyStringObject must not be null')");
+
+        FluentActions
+            .Invoking(() => GuardClause.NotNull(anyStringObject, nameof(anyStringObject)))
+            .Should()
+            .ThrowExactly<ArgumentNullException>()
+            .WithMessage("Value cannot be null. (Parameter 'anyStringObject must not be null')");
     }
 }

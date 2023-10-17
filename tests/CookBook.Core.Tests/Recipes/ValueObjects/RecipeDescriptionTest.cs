@@ -1,8 +1,4 @@
-﻿using CookBook.Core.Recipes.ValueObjects;
-using Sawnet.Testing.Extensions;
-using Shouldly;
-
-namespace CookBook.Core.Tests.Recipes.ValueObjects;
+﻿namespace CookBook.Core.Tests.Recipes.ValueObjects;
 
 public class RecipeDescriptionTest
 {
@@ -13,7 +9,7 @@ public class RecipeDescriptionTest
 
         var recipeDescription = RecipeDescription.Create(description);
 
-        recipeDescription.Description.ShouldBe(description);
+        recipeDescription.Description.Should().Be(description);
     }
 
     [Fact]
@@ -25,7 +21,7 @@ public class RecipeDescriptionTest
 
         foreach (var value in recipeDescription.InvokeGetAtomicValues())
         {
-            value.ShouldNotBeNull();
+            value.Should().NotBeNull();
         }
     }
 
@@ -33,14 +29,14 @@ public class RecipeDescriptionTest
     public void Should_Throw_Exception_If_Description_Is_Null()
     {
         var exception = Assert.Throws<ArgumentNullException>(() => RecipeDescription.Create(null));
-        exception.Message.ShouldContain("description");
+        exception.Message.Should().Contain("description");
     }
 
     [Fact]
     public void Should_Throw_Exception_If_Description_Is_Empty()
     {
         var exception = Assert.Throws<ArgumentException>(() => RecipeDescription.Create(string.Empty));
-        exception.Message.ShouldContain("description");
+        exception.Message.Should().Contain("description");
     }
 
     [Fact]
@@ -50,7 +46,7 @@ public class RecipeDescriptionTest
 
         string recipeDescription = RecipeDescription.Create(descriptionValue);
 
-        recipeDescription.ShouldBe(descriptionValue);
+        recipeDescription.Should().Be(descriptionValue);
     }
 
     [Fact]
@@ -60,6 +56,6 @@ public class RecipeDescriptionTest
 
         var recipeDescription = (RecipeDescription)descriptionValue;
 
-        recipeDescription.Description.ShouldBe(descriptionValue);
+        recipeDescription.Description.Should().Be(descriptionValue);
     }
 }

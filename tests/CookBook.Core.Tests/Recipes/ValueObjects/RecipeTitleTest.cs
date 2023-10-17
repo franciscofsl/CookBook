@@ -1,8 +1,4 @@
-﻿using CookBook.Core.Recipes.ValueObjects;
-using Sawnet.Testing.Extensions;
-using Shouldly;
-
-namespace CookBook.Core.Tests.Recipes.ValueObjects;
+﻿namespace CookBook.Core.Tests.Recipes.ValueObjects;
 
 public class RecipeTitleTest
 {
@@ -13,7 +9,7 @@ public class RecipeTitleTest
 
         var recipeTitle = RecipeTitle.Create(title);
 
-        recipeTitle.Title.ShouldBe(title);
+        recipeTitle.Title.Should().Be(title);
     }
 
     [Fact]
@@ -25,7 +21,7 @@ public class RecipeTitleTest
 
         foreach (var value in recipeTitle.InvokeGetAtomicValues())
         {
-            value.ShouldNotBeNull();
+            value.Should().NotBeNull();
         }
     }
 
@@ -33,14 +29,14 @@ public class RecipeTitleTest
     public void Should_Throw_Exception_If_Title_Is_Null()
     {
         var exception = Assert.Throws<ArgumentNullException>(() => RecipeTitle.Create(null));
-        exception.Message.ShouldContain("title");
+        exception.Message.Should().Contain("title");
     }
 
     [Fact]
     public void Should_Throw_Exception_If_Title_Is_Empty()
     {
         var exception = Assert.Throws<ArgumentException>(() => RecipeTitle.Create(string.Empty));
-        exception.Message.ShouldContain("title");
+        exception.Message.Should().Contain("title");
     }
 
     [Fact]
@@ -50,7 +46,7 @@ public class RecipeTitleTest
 
         string recipeTitle = RecipeTitle.Create(titleValue);
 
-        recipeTitle.ShouldBe(titleValue);
+        recipeTitle.Should().Be(titleValue);
     }
 
     [Fact]
@@ -60,6 +56,6 @@ public class RecipeTitleTest
 
         var recipeTitle = (RecipeTitle)titleValue;
 
-        recipeTitle.Title.ShouldBe(titleValue);
+        recipeTitle.Title.Should().Be(titleValue);
     }
 }

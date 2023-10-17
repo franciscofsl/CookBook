@@ -1,7 +1,4 @@
-﻿using CookBook.Core.Recipes.ValueObjects;
-using Shouldly;
-
-namespace CookBook.Core.Tests.Recipes.ValueObjects;
+﻿namespace CookBook.Core.Tests.Recipes.ValueObjects;
 
 public class RecipeIdTest
 {
@@ -12,8 +9,8 @@ public class RecipeIdTest
 
         var recipeId = (RecipeId)id;
 
-        recipeId.ShouldNotBeNull();
-        ((Guid)recipeId).ShouldBe(id);
+        recipeId.Should().NotBeNull();
+        ((Guid)recipeId).Should().Be(id);
     }
 
     [Fact]
@@ -23,7 +20,7 @@ public class RecipeIdTest
 
         var recipeId = (RecipeId)id;
 
-        recipeId.ShouldNotBeNull();
-        ((Guid)recipeId).ShouldBe(id);
+        recipeId.Should().NotBeNull();
+        ((Guid)recipeId).Should().Be(id);
     }
 }

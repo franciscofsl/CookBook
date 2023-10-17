@@ -1,8 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Sawnet.Core.Modules;
-using Shouldly;
-
-namespace Sawnet.Core.Tests.Modules;
+﻿namespace Sawnet.Core.Tests.Modules;
 
 public class SawnetApplicationTest
 {
@@ -13,7 +9,7 @@ public class SawnetApplicationTest
 
         var application = serviceCollection.AddSawnetApplication<FakeApplication>();
 
-        application.ShouldNotBeNull();
+        application.Should().NotBeNull();
     }
 
     [ModulesToInclude(typeof(FakeModule))]

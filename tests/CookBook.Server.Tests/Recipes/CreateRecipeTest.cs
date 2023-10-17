@@ -3,7 +3,7 @@
 // using System.Net.Http.Json;
 // using CookBook.Application.Recipes.Dtos;
 // using CookBook.Blazor.Server.Endpoints;
-// using Shouldly;
+// 
 //
 // namespace CookBook.Server.Tests.Recipes;
 //
@@ -29,8 +29,8 @@
 //
 //         var createdRecipe = await response.Content.ReadFromJsonAsync<RecipeDto>();
 //
-//         createdRecipe.Title.ShouldBe(createInput.Title);
-//         createdRecipe.Description.ShouldBe(createInput.Description);
+//         createdRecipe.Title.Should().Be(createInput.Title);
+//         createdRecipe.Description.Should().Be(createInput.Description);
 //     }
 //
 //     [Fact]
@@ -46,6 +46,6 @@
 //
 //         var logResult = await _client.GetFromJsonAsync<List<string>>(ApiRoutes.Logs);
 //
-//         logResult.ElementAt(0).ShouldBe($"The recipe '{createInput.Title}' has been created.");
+//         logResult.ElementAt(0).Should().Be($"The recipe '{createInput.Title}' has been created.");
 //     }
 // }

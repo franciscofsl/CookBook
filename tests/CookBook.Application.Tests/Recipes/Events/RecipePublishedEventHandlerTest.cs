@@ -1,12 +1,4 @@
-﻿using CookBook.Application.Contracts;
-using CookBook.Application.Recipes.Events;
-using CookBook.Core.Recipes.Events;
-using CookBook.Test;
-using NSubstitute;
-using Sawnet.Core.Events;
-using Shouldly;
-
-namespace CookBook.Application.Tests.Recipes.Events;
+﻿namespace CookBook.Application.Tests.Recipes.Events;
 
 public class RecipePublishedEventHandlerTest
 {
@@ -22,6 +14,6 @@ public class RecipePublishedEventHandlerTest
         {
             await domainEvent.Handle(new RecipePublished(recipe));
         });
-        exception.Message.ShouldBe("Can't notify published recipe if recipe is draft.");
+        exception.Message.Should().Be("Can't notify published recipe if recipe is draft.");
     } 
 }

@@ -1,9 +1,4 @@
-﻿using CookBook.Application.Recipes.Commands.CreateRecipe;
-using CookBook.Core.Recipes;
-using NSubstitute;
-using Shouldly;
-
-namespace CookBook.Application.Tests.Recipes.Commands;
+﻿namespace CookBook.Application.Tests.Recipes.Commands;
 
 public class CreateRecipeCommandTest
 {
@@ -20,6 +15,6 @@ public class CreateRecipeCommandTest
         var commandHandler = new CreateRecipeCommandHandler(_recipesRepository);
 
         var result = await commandHandler.Handle(new CreateRecipeCommand());
-        result.IsDraft.ShouldBeTrue();
+        result.IsDraft.Should().BeTrue();
     }
 }
