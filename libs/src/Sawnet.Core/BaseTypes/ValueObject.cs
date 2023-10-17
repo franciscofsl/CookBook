@@ -14,7 +14,7 @@ public abstract record ValueObject : IEquatable<ValueObject>
         return GetAtomicValues().SequenceEqual(other.GetAtomicValues());
     }
 
-    public virtual bool Equals(ValueObject? other)
+    public virtual bool Equals(ValueObject other)
     {
         return other is not null && ValuesAreEqual(other);
     }

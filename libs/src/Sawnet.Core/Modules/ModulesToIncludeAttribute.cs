@@ -7,7 +7,7 @@ public class ModulesToIncludeAttribute : Attribute
 
     public ModulesToIncludeAttribute(params Type[] modulesTypes)
     {
-        if (modulesTypes is null || modulesTypes.Any() == false)
+        if (modulesTypes is null || !modulesTypes.Any())
             throw new InvalidOperationException("No module has been configured in the \"ModulesToInclude\" attribute");
 
         foreach (var moduleType in modulesTypes)

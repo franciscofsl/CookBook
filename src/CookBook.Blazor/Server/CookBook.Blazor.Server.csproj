@@ -19,5 +19,6 @@
         <ProjectReference Include="..\Client\CookBook.Blazor.Client.csproj"/>
     </ItemGroup>
 
+
     
 </Project>
