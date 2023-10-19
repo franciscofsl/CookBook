@@ -3,4 +3,4 @@ using Sawnet.Application.Cqrs.Queries;
 
 namespace CookBook.Application.Recipes.Queries.Get;
 
-public record GetRecipeQuery(Guid RecipeId) : IQueryRequest<RecipeDto>;
+public record GetRecipeQuery(Guid RecipeId) : IQuery<RecipeDto>;

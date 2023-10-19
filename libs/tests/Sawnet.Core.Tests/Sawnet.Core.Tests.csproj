@@ -25,7 +25,9 @@
     
     <ItemGroup>
       <ProjectReference Include="..\..\src\Sawnet.Core\Sawnet.Core.csproj" />
+      <ProjectReference Include="..\..\src\Sawnet.Testing\Sawnet.Testing.csproj" />
     </ItemGroup>
+    
     
     
 </Project>

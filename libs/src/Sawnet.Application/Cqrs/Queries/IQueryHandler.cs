@@ -1,8 +1,7 @@
 namespace Sawnet.Application.Cqrs.Queries;
 
 public interface IQueryHandler<in TQuery, TResult>
-    where TQuery : IQueryRequest<TResult>
-    where TResult : class
+    where TQuery : IQuery<TResult>
 {
     Task<TResult> Handle(TQuery query, CancellationToken cancellationToken = default);
 }
