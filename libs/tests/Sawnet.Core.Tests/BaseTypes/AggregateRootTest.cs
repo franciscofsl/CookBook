@@ -47,7 +47,7 @@ public class AggregateRootTest
         aggregateRoot.Should().NotBeNull();
     }
 
-    private void InvokeRaiseDomainEvent(TestAggregateRoot aggregateRoot, TestDomainEvent domainEvent)
+    private static void InvokeRaiseDomainEvent(TestAggregateRoot aggregateRoot, TestDomainEvent domainEvent)
     {
         var methodInfo =
             typeof(AggregateRoot<TestEntityId>).GetMethod("RaiseDomainEvent",
