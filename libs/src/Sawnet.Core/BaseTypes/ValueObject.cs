@@ -1,21 +1,21 @@
 ﻿namespace Sawnet.Core.BaseTypes;
 
-public abstract record ValueObject : IEquatable<ValueObject>
+public abstract record ValueObject
 {
     protected abstract IEnumerable<object> GetAtomicValues();
+
+    public virtual bool Equals(ValueObject other)
+    {
+        if (other == null || other.GetType() != GetType())
+        {
+            return false;
+        }
+
+        return GetAtomicValues().SequenceEqual(other.GetAtomicValues());
+    }
 
     public override int GetHashCode()
     {
         return GetAtomicValues().Aggregate(default(int), HashCode.Combine);
-    }
-
-    private bool ValuesAreEqual(ValueObject other)
-    {
-        return GetAtomicValues().SequenceEqual(other.GetAtomicValues());
-    }
-
-    public virtual bool Equals(ValueObject other)
-    {
-        return other is not null && ValuesAreEqual(other);
     }
 }

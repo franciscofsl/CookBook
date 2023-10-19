@@ -1,7 +1,4 @@
-﻿using Sawnet.Core.Events;
-
-
-namespace Sawnet.Core.Tests.Events;
+﻿namespace Sawnet.Core.Tests.Events;
 
 public class DomainEventPublisherTest
 {

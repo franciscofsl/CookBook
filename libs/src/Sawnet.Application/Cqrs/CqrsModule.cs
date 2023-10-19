@@ -1,10 +1,12 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System.Diagnostics.CodeAnalysis;
+using Microsoft.Extensions.DependencyInjection;
 using Sawnet.Application.Cqrs.Commands;
 using Sawnet.Application.Cqrs.Queries;
 using Sawnet.Core.Modules;
 
 namespace Sawnet.Application.Cqrs;
 
+[ExcludeFromCodeCoverage]
 public class CqrsModule : SawnetModule
 {
     public override void ConfigureCustomServices(IServiceCollection services)
@@ -14,7 +16,8 @@ public class CqrsModule : SawnetModule
 
         var assemblies = AppDomain.CurrentDomain
             .GetAssemblies()
-            .Where(_ => {
+            .Where(_ =>
+            {
                 var name = _.GetName().Name;
                 return name != null && name.Contains("Application");
             })

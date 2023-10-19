@@ -2,8 +2,5 @@
 
 public abstract record EntityId(Guid Id) : ValueObject
 {
-    protected override IEnumerable<object> GetAtomicValues()
-    {
-        yield return Id;
-    }
+    protected override IEnumerable<object> GetAtomicValues() => Enumerable.Repeat((object)Id, 1);
 }

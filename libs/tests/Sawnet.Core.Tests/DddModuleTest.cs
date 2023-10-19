@@ -1,7 +1,4 @@
-﻿using Sawnet.Core.Events;
-
-
-namespace Sawnet.Core.Tests;
+﻿namespace Sawnet.Core.Tests;
 
 public class DddModuleTest
 {
