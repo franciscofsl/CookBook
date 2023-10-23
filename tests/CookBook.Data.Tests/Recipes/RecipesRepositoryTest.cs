@@ -1,7 +1,9 @@
-﻿namespace CookBook.Data.Tests.Recipes;
+﻿using FluentAssertions;
+
+namespace CookBook.Data.Tests.Recipes;
 
 public class RecipesRepositoryTest : DataTest
-{ 
+{
     public RecipesRepositoryTest(CookBookDbFixture fixture) : base(fixture)
     {
     }
@@ -9,7 +11,8 @@ public class RecipesRepositoryTest : DataTest
     [Fact]
     public async Task Should_Insert_Recipe()
     {
-        var repo = GetRequiredService<IRecipesRepository>();
-        await repo.InsertAsync(new Recipe(new RecipeId(Guid.NewGuid())));
+        var repository = GetRequiredService<IRecipesRepository>();
+        var recipe = await repository.InsertAsync(new Recipe(new RecipeId(Guid.NewGuid())));
+        recipe.Should().NotBeNull();
     }
 }
