@@ -1,10 +1,6 @@
-﻿using CookBook.Core.Recipes;
-using CookBook.Core.Recipes.Records;
-using CookBook.Core.Recipes.ValueObjects;
-using Microsoft.EntityFrameworkCore;
-using Sawnet.Infrastructure.Data;
+﻿using CookBook.Core.Recipes.Records;
 
-namespace CookBook.Infrastructure.Data.Repositories;
+namespace CookBook.Data.Repositories;
 
 public class RecipesRepository : EfRepository<Recipe, RecipeId>, IRecipesRepository
 {

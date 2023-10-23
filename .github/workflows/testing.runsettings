@@ -7,15 +7,16 @@
                     <CodeCoverage>
                         <ModulePaths>
                             <Include>
-                                <ModulePath>.*CookBook\.Infrastructure\.dll</ModulePath> 
+                                <ModulePath>.*CookBook\.Data\.dll</ModulePath> 
                                 <ModulePath>.*CookBook\.Core\.dll</ModulePath> 
                                 <ModulePath>.*CookBook\.Application\.dll</ModulePath> 
-                                <ModulePath>.*Sawnet\.Infrastructure\.dll</ModulePath> 
+                                <ModulePath>.*Sawnet\.Data\.dll</ModulePath> 
                                 <ModulePath>.*Sawnet\.Core\.dll</ModulePath> 
                                 <ModulePath>.*Sawnet\.Application\.dll</ModulePath> 
                             </Include>
                             <Exclude>
                                 <ModulePath>.*Tests\.dll</ModulePath>
+                                <ModulePath>.*Infrastructure\.dll</ModulePath>
                             </Exclude>
                         </ModulePaths>
                     </CodeCoverage>

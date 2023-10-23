@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace Sawnet.Infrastructure.Data;
+namespace Sawnet.Data;
 
 public interface IDbContext
 {

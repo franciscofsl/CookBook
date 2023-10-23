@@ -2,7 +2,7 @@
 using Sawnet.Core.Contracts;
 using Sawnet.Core.Modules;
 
-namespace Sawnet.Infrastructure.Data;
+namespace Sawnet.Data;
 
 public class EfCoreModule : SawnetModule
 {

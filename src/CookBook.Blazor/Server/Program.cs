@@ -1,7 +1,5 @@
 using CookBook.Blazor.Server;
-using CookBook.Infrastructure.Data;
 using Sawnet.Core.Modules;
-using Sawnet.Infrastructure.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +8,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.AddSawnetApplication<CookBookApplication>();
-builder.Services.AddDbContext<IDbContext, CookBookDbContext>();
 
 builder.Services.AddSwaggerGen(_ => { _.EnableAnnotations(); });
 

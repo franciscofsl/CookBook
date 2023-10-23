@@ -1,9 +1,4 @@
-﻿using CookBook.Core.Recipes;
-using CookBook.Core.Recipes.ValueObjects;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
-namespace CookBook.Infrastructure.Data.Configuration;
+﻿namespace CookBook.Data.Configuration;
 
 public class RecipeConfiguration : IEntityTypeConfiguration<Recipe>
 {
@@ -15,12 +10,9 @@ public class RecipeConfiguration : IEntityTypeConfiguration<Recipe>
 
         builder.OwnsOne(_ => _.Title);
         builder.OwnsOne(_ => _.Description);
- 
-        builder.OwnsOne(_ => _.PreparationTime, ownedNavigationBuilder =>
-        {
-            ownedNavigationBuilder.ToJson(); 
-        });
-        
+
+        builder.OwnsOne(_ => _.PreparationTime, ownedNavigationBuilder => { ownedNavigationBuilder.ToJson(); });
+
         builder.OwnsOne(_ => _.Ingredients, ownedNavigationBuilder =>
         {
             ownedNavigationBuilder.ToJson();

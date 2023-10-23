@@ -13,12 +13,15 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\..\..\libs\src\Sawnet.Data\Sawnet.Data.csproj" />
         <ProjectReference Include="..\..\..\libs\src\Sawnet.Server\Sawnet.Server.csproj" />
         <ProjectReference Include="..\..\CookBook.Application\CookBook.Application.csproj" />
+        <ProjectReference Include="..\..\CookBook.Data\CookBook.Data.csproj" />
         <ProjectReference Include="..\..\CookBook.Infrastructure\CookBook.Infrastructure.csproj" />
         <ProjectReference Include="..\Client\CookBook.Blazor.Client.csproj"/>
     </ItemGroup>
 
-
-    
+    <ItemGroup>
+        <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute" />
+    </ItemGroup>    
 </Project>
