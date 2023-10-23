@@ -1,10 +1,10 @@
 ﻿using CookBook.Blazor.Server;
-using CookBook.Infrastructure.Data;
+using CookBook.Data;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Sawnet.Infrastructure.Data;
+using Sawnet.Data;
 
 namespace CookBook.Server.Tests;
 

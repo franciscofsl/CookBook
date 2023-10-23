@@ -1,9 +1,8 @@
-﻿using System;
+﻿#nullable disable
+
 using Microsoft.EntityFrameworkCore.Migrations;
 
-#nullable disable
-
-namespace CookBook.Infrastructure.Data.Migrations
+namespace CookBook.Data.Migrations
 {
     /// <inheritdoc />
     public partial class Initial : Migration

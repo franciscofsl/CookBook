@@ -1,6 +1,4 @@
 ﻿using CookBook.Application.Contracts;
-using Microsoft.Extensions.DependencyInjection;
-using Sawnet.Core.Modules;
 
 namespace CookBook.Infrastructure.Logger;
 

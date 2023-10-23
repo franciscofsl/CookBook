@@ -1,13 +1,8 @@
 ﻿using System.Reflection;
-using System.Text.Json;
-using CookBook.Core.Recipes;
-using CookBook.Core.Recipes.ValueObjects;
-using Microsoft.EntityFrameworkCore;
 using Sawnet.Core.BaseTypes;
 using Sawnet.Core.Events;
-using Sawnet.Infrastructure.Data;
 
-namespace CookBook.Infrastructure.Data;
+namespace CookBook.Data;
 
 public class CookBookDbContext : DbContext, IDbContext
 {
