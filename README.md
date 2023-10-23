@@ -25,3 +25,8 @@ CookBook is a recipe management application implemented in C# using the principl
 4. **Configure Docker instance** 🐳 with `docker run -d --name sql-cookbook-server -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=SqlServer_Docker2023" -p 1434:1433 mcr.microsoft.com/mssql/server:2019-latest`
 5. **Run the migration** 🚀 to create the database: `dotnet ef database update`.
 6. **Run CookPad.Blazor.Server** 🚀.
+
+## Run CookBook.Data.Tests
+1. **Start Docker instance**🐳  with `docker-compose up`
+2. **Build CookBook.Data.Tests** with `dotnet build`
+3. **Run project** with `dotnet test`
