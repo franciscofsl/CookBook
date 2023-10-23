@@ -14,6 +14,6 @@ public class CookBookDataModule : SawnetModule
             services.AddDbContext<IDbContext, CookBookDbContext>(opt => opt.UseSqlServer(connectionString));
         }
 
-        services.AddTransient<IRecipesRepository, RecipesRepository>();
+        services.AddScoped<IRecipesRepository, RecipesRepository>();
     }
 }
