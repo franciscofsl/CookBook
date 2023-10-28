@@ -1,4 +1,6 @@
-﻿namespace CookBook.Data;
+﻿using Microsoft.Extensions.Configuration;
+
+namespace CookBook.Data;
 
 [ExcludeFromCodeCoverage]
 [ModulesToInclude(typeof(EfCoreModule))]

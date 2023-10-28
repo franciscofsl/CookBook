@@ -7,9 +7,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="7.0.12" />
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
-        <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.5.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" />
+        <PackageReference Include="Swashbuckle.AspNetCore" />
+        <PackageReference Include="Swashbuckle.AspNetCore.Annotations" />
     </ItemGroup>
 
     <ItemGroup>
@@ -18,7 +18,7 @@
         <ProjectReference Include="..\..\CookBook.Application\CookBook.Application.csproj" />
         <ProjectReference Include="..\..\CookBook.Data\CookBook.Data.csproj" />
         <ProjectReference Include="..\..\CookBook.Infrastructure\CookBook.Infrastructure.csproj" />
-        <ProjectReference Include="..\Client\CookBook.Blazor.Client.csproj"/>
+        <ProjectReference Include="..\Client\CookBook.Blazor.Client.csproj" />
     </ItemGroup>
 
     <ItemGroup>
