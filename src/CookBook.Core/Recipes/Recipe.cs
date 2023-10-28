@@ -1,10 +1,12 @@
-﻿using CookBook.Core.Recipes.Events;
+﻿using System.Diagnostics.CodeAnalysis;
+using CookBook.Core.Recipes.Events;
 using CookBook.Core.Recipes.ValueObjects;
 
 namespace CookBook.Core.Recipes;
 
 public class Recipe : AggregateRoot<RecipeId>
 {
+    [ExcludeFromCodeCoverage]
     private Recipe()
     {
     }

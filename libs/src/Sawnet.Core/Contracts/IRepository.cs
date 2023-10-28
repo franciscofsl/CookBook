@@ -8,7 +8,7 @@ where TEntityId : EntityId
 {
     public Task<TAggregateRoot> GetAsync(TEntityId id);
 
-    public Task InsertAsync(TAggregateRoot entity, bool save = true);
+    public Task<TAggregateRoot> InsertAsync(TAggregateRoot entity, bool save = true);
 
     public Task UpdateAsync(TAggregateRoot entity, bool save = true);
 

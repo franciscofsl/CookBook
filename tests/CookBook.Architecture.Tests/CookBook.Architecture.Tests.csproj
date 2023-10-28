@@ -3,16 +3,14 @@
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>disable</Nullable>
 
         <IsPackable>false</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="FluentAssertions" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" />
-        <PackageReference Include="NSubstitute" />
+        <PackageReference Include="NetArchTest.Rules" />
         <PackageReference Include="xunit" />
         <PackageReference Include="xunit.runner.visualstudio">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -25,13 +23,16 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\libs\src\Sawnet.Application\Sawnet.Application.csproj" />
-      <ProjectReference Include="..\..\libs\src\Sawnet.Testing\Sawnet.Testing.csproj" />
-      <ProjectReference Include="..\..\src\CookBook.Application\CookBook.Application.csproj" />
-      <ProjectReference Include="..\..\src\CookBook.Infrastructure\CookBook.Infrastructure.csproj" />
-      <ProjectReference Include="..\CookBook.Test\CookBook.Test.csproj" />
+        <ProjectReference Include="..\..\libs\src\Sawnet.Application\Sawnet.Application.csproj" />
+        <ProjectReference Include="..\..\src\CookBook.Application\CookBook.Application.csproj" />
+        <ProjectReference Include="..\..\src\CookBook.Blazor\Client\CookBook.Blazor.Client.csproj" />
+        <ProjectReference Include="..\..\src\CookBook.Blazor\Server\CookBook.Blazor.Server.csproj" />
+        <ProjectReference Include="..\..\src\CookBook.Core\CookBook.Core.csproj" />
+        <ProjectReference Include="..\..\src\CookBook.Data\CookBook.Data.csproj" />
+        <ProjectReference Include="..\..\src\CookBook.Infrastructure\CookBook.Infrastructure.csproj" />
+        <ProjectReference Include="..\..\src\CookBook.Shared\CookBook.Shared.csproj" />
     </ItemGroup>
- 
+    
     <ItemGroup>
         <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute" />
     </ItemGroup>

@@ -23,13 +23,15 @@ public class EfRepository<TAggregateRoot, TEntityId>
         return await query.FirstOrDefaultAsync(_ => _.Id == id);
     } 
 
-    public async Task InsertAsync(TAggregateRoot entity, bool save = true)
+    public async Task<TAggregateRoot> InsertAsync(TAggregateRoot entity, bool save = true)
     {
         await DbContext.Set<TAggregateRoot>().AddAsync(entity);
         if (save)
         {
             await DbContext.SaveChangesAsync();
         }
+
+        return entity;
     }
     
     public async Task UpdateAsync(TAggregateRoot entity, bool save = true)

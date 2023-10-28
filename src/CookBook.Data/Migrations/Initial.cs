@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CookBook.Data.Migrations
 {
+    [ExcludeFromCodeCoverage]
     /// <inheritdoc />
     public partial class Initial : Migration
     {
@@ -21,10 +22,7 @@ namespace CookBook.Data.Migrations
                     Ingredients = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsDraft = table.Column<bool>(type: "bit", nullable: false)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Recipes", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_Recipes", x => x.Id); });
         }
 
         /// <inheritdoc />

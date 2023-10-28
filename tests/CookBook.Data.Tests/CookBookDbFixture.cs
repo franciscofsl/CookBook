@@ -57,7 +57,7 @@ public class CookBookDbFixture : IDisposable
         return services.BuildServiceProvider();
     }
 
-    private void ConfigureDbContext(IServiceCollection services)
+    private static void ConfigureDbContext(IServiceCollection services)
     {
         var descriptor = services
             .SingleOrDefault(d => d.ServiceType == typeof(DbContextOptions<CookBookDbContext>));

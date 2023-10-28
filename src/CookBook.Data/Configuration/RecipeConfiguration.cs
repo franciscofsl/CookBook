@@ -4,6 +4,7 @@ public class RecipeConfiguration : IEntityTypeConfiguration<Recipe>
 {
     public void Configure(EntityTypeBuilder<Recipe> builder)
     {
+        builder.HasKey(_ => _.Id);
         builder.Property(x => x.Id)
             .HasConversion(x => x.Id, _ => (RecipeId)_)
             .IsRequired();

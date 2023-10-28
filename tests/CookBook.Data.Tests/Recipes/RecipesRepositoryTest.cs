@@ -1,7 +1,10 @@
-﻿namespace CookBook.Data.Tests.Recipes;
+﻿using CookBook.Test;
+using FluentAssertions;
+
+namespace CookBook.Data.Tests.Recipes;
 
 public class RecipesRepositoryTest : DataTest
-{ 
+{
     public RecipesRepositoryTest(CookBookDbFixture fixture) : base(fixture)
     {
     }
@@ -9,7 +12,49 @@ public class RecipesRepositoryTest : DataTest
     [Fact]
     public async Task Should_Insert_Recipe()
     {
-        var repo = GetRequiredService<IRecipesRepository>();
-        await repo.InsertAsync(new Recipe(new RecipeId(Guid.NewGuid())));
+        var repository = GetRequiredService<IRecipesRepository>();
+        var recipe = await repository.InsertAsync(new Recipe(new RecipeId(Guid.NewGuid())));
+        recipe.Should().NotBeNull();
+    }
+
+    [Fact]
+    public async Task Should_Delete_Recipe()
+    {
+        var repository = GetRequiredService<IRecipesRepository>();
+
+        var recipe = await repository.InsertAsync(new Recipe(new RecipeId(Guid.NewGuid()))
+        {
+            Title = (RecipeTitle)"Title"
+        });
+
+        await repository.DeleteAsync(recipe);
+
+        var deletedRecipe = await repository.GetAsync(recipe.Id);
+
+        deletedRecipe.Should().BeNull();
+    }
+
+    [Fact]
+    public async Task Should_Get_My_Recipes()
+    {
+        var repository = GetRequiredService<IRecipesRepository>();
+
+        var recipe = RecipeBuilder
+            .Create()
+            .SetTitle((RecipeTitle)"Title")
+            .SetDescription((RecipeDescription)"Description")
+            .Build();
+
+        recipe.PreparationTime = PreparationTime.Create(2, 40);
+
+        await repository.InsertAsync(recipe);
+
+        var myRecipes = await repository.GetMyRecipesAsync();
+
+        myRecipes.Should().HaveCountGreaterOrEqualTo(1);
+
+        var createdRecipe = myRecipes.First(_ => _.Id == recipe.Id);
+
+        createdRecipe.Title.Should().Be(recipe.Title);
     }
 }

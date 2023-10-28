@@ -1,6 +1,5 @@
 ﻿using CookBook.Application;
 using CookBook.Data;
-using CookBook.Infrastructure.Data;
 using CookBook.Infrastructure.Logger;
 using Sawnet.Core.Modules;
 
