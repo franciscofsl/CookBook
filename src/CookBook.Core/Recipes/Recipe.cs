@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using CookBook.Core.Recipes.Events;
 using CookBook.Core.Recipes.ValueObjects;
+using Sawnet.Core.Results;
 
 namespace CookBook.Core.Recipes;
 
@@ -29,9 +30,38 @@ public class Recipe : AggregateRoot<RecipeId>
 
     public bool IsDraft { get; private set; }
 
-    public void Publish()
+    public Result Publish()
     {
+        var checkResult = CheckPublish();
+
+        if (checkResult.IsFailure)
+        {
+            return checkResult;
+        }
+
         IsDraft = false;
         RaiseDomainEvent(new RecipePublished(this));
+
+        return Result.Ok();
+    }
+
+    private Result CheckPublish()
+    {
+        if (Title is null)
+        {
+            return Result.Failure(RecipeErrors.NotHasTitle);
+        }
+
+        if (Description is null)
+        {
+            return Result.Failure(RecipeErrors.NotHasDescription);
+        }
+
+        if (!Ingredients.Lines.Any())
+        { 
+            return Result.Failure(RecipeErrors.NotHasIngredients);
+        }
+
+        return Result.Ok();
     }
 }
