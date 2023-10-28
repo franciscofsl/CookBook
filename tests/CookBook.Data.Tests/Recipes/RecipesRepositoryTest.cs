@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using CookBook.Test;
+using FluentAssertions;
 
 namespace CookBook.Data.Tests.Recipes;
 
@@ -31,5 +32,29 @@ public class RecipesRepositoryTest : DataTest
         var deletedRecipe = await repository.GetAsync(recipe.Id);
 
         deletedRecipe.Should().BeNull();
+    }
+
+    [Fact]
+    public async Task Should_Get_My_Recipes()
+    {
+        var repository = GetRequiredService<IRecipesRepository>();
+
+        var recipe = RecipeBuilder
+            .Create()
+            .SetTitle((RecipeTitle)"Title")
+            .SetDescription((RecipeDescription)"Description")
+            .Build();
+
+        recipe.PreparationTime = PreparationTime.Create(2, 40);
+
+        await repository.InsertAsync(recipe);
+
+        var myRecipes = await repository.GetMyRecipesAsync();
+
+        myRecipes.Should().HaveCountGreaterOrEqualTo(1);
+
+        var createdRecipe = myRecipes.First(_ => _.Id == recipe.Id);
+
+        createdRecipe.Title.Should().Be(recipe.Title);
     }
 }

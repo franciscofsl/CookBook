@@ -24,6 +24,7 @@
     <ItemGroup>
       <ProjectReference Include="..\..\src\CookBook.Data\CookBook.Data.csproj" />
       <ProjectReference Include="..\..\src\CookBook.Infrastructure\CookBook.Infrastructure.csproj" />
+      <ProjectReference Include="..\CookBook.Test\CookBook.Test.csproj" />
     </ItemGroup>
     
     <ItemGroup>

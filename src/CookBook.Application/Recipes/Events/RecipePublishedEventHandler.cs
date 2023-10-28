@@ -1,9 +1,8 @@
 ﻿using CookBook.Application.Contracts;
-using CookBook.Core.Recipes.Events;
-using Sawnet.Core.Events;
 
 namespace CookBook.Application.Recipes.Events;
 
+[ExcludeFromCodeCoverage]
 public class RecipePublishedEventHandler : IDomainEventHandler<RecipePublished>
 {
     private readonly IFakeLogger _fakeLogger;

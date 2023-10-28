@@ -25,7 +25,7 @@ public class GetMyRecipes : BaseAsyncEndpoint.WithoutRequest.WithResponse<IReadO
     [HttpGet(ApiRoutes.MyRecipes)]
     public override async Task<ActionResult<IReadOnlyList<RecipeForListDto>>> HandleAsync(CancellationToken cancellationToken = default)
     {
-        var myRecipes = await _queryDispatcher.Dispatch(new GetMyRecipesCommand());
+        var myRecipes = await _queryDispatcher.Dispatch(new GetMyRecipesQuery());
 
         return Ok(myRecipes);
     }

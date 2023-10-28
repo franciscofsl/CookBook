@@ -1,8 +1,4 @@
-﻿using System.Reflection;
-using Sawnet.Core.BaseTypes;
-using Sawnet.Core.Events;
-
-namespace CookBook.Data;
+﻿namespace CookBook.Data;
 
 public class CookBookDbContext : DbContext, IDbContext
 {
@@ -28,7 +24,8 @@ public class CookBookDbContext : DbContext, IDbContext
     {
         if (!optionsBuilder.IsConfigured)
         {
-            optionsBuilder.UseSqlServer("Server=localhost,1434;Database=CookBook;User=sa;Password=SqlServer_Docker2023;MultipleActiveResultSets=true;TrustServerCertificate=True;");
+            optionsBuilder.UseSqlServer(
+                "Server=localhost,1434;Database=CookBook;User=sa;Password=SqlServer_Docker2023;MultipleActiveResultSets=true;TrustServerCertificate=True;");
         }
     }
 

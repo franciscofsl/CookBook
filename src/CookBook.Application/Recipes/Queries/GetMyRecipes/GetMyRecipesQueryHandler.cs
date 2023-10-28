@@ -4,16 +4,16 @@ using Sawnet.Application.Cqrs.Queries;
 
 namespace CookBook.Application.Recipes.Queries.GetMyRecipes;
 
-public class GetMyRecipesCommandHandler : IQueryHandler<GetMyRecipesCommand, IReadOnlyList<RecipeForListDto>>
+public class GetMyRecipesQueryHandler : IQueryHandler<GetMyRecipesQuery, IReadOnlyList<RecipeForListDto>>
 {
     private readonly IRecipesRepository _recipesRepository;
 
-    public GetMyRecipesCommandHandler(IRecipesRepository recipesRepository)
+    public GetMyRecipesQueryHandler(IRecipesRepository recipesRepository)
     {
         _recipesRepository = recipesRepository;
     }
 
-    public async Task<IReadOnlyList<RecipeForListDto>> Handle(GetMyRecipesCommand query,
+    public async Task<IReadOnlyList<RecipeForListDto>> Handle(GetMyRecipesQuery query,
         CancellationToken cancellationToken = default)
     {
         var myRecipes = await _recipesRepository.GetMyRecipesAsync();

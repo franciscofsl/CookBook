@@ -1,5 +1,6 @@
 ﻿namespace CookBook.Data;
 
+[ExcludeFromCodeCoverage]
 [ModulesToInclude(typeof(EfCoreModule))]
 public class CookBookDataModule : SawnetModule
 {
@@ -8,7 +9,7 @@ public class CookBookDataModule : SawnetModule
         var serviceProvider = services.BuildServiceProvider();
         var configuration = serviceProvider.GetService<IConfiguration>();
         var connectionString = configuration?.GetConnectionString("DefaultConnection");
-        
+
         if (!string.IsNullOrEmpty(connectionString))
         {
             services.AddDbContext<IDbContext, CookBookDbContext>(opt => opt.UseSqlServer(connectionString));
