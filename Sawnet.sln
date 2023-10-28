@@ -52,6 +52,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sawnet.Data", "libs\src\Saw
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBook.Data", "src\CookBook.Data\CookBook.Data.csproj", "{DFF35AA6-8B34-4B30-9B8B-71CEBC8F56D6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBook.Architecture.Tests", "tests\CookBook.Architecture.Tests\CookBook.Architecture.Tests.csproj", "{2C3AF265-23C1-46D2-972D-302AE08D1F59}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,7 @@ Global
 		{BC31810E-30F0-40B3-A575-F6E8C42D66B9} = {034CFB37-9149-4121-A288-C79658E8BA86}
 		{B9ADE1B8-0EFF-4870-82CA-F57B4C69612F} = {7238394A-B73B-4CD1-97E9-FBA376A5686A}
 		{DFF35AA6-8B34-4B30-9B8B-71CEBC8F56D6} = {1F0CB0B9-7F76-49E0-A95F-4644512E2585}
+		{2C3AF265-23C1-46D2-972D-302AE08D1F59} = {034CFB37-9149-4121-A288-C79658E8BA86}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{705D8400-A88B-4629-B009-4BCFA9793AD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -167,5 +170,9 @@ Global
 		{DFF35AA6-8B34-4B30-9B8B-71CEBC8F56D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFF35AA6-8B34-4B30-9B8B-71CEBC8F56D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFF35AA6-8B34-4B30-9B8B-71CEBC8F56D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C3AF265-23C1-46D2-972D-302AE08D1F59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C3AF265-23C1-46D2-972D-302AE08D1F59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C3AF265-23C1-46D2-972D-302AE08D1F59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C3AF265-23C1-46D2-972D-302AE08D1F59}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
