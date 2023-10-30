@@ -2,7 +2,7 @@
 using Sawnet.Core.BaseTypes;
 using Sawnet.Core.Contracts;
 
-namespace Sawnet.Data;
+namespace Sawnet.Data.Repositories;
 
 public class EfRepository<TAggregateRoot, TEntityId>
     : IRepository<TAggregateRoot, TEntityId>

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Sawnet.Core.Contracts;
 using Sawnet.Core.Modules;
+using Sawnet.Data.Repositories;
 
 namespace Sawnet.Data;
 
