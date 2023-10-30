@@ -1,5 +1,3 @@
-using Microsoft.Extensions.DependencyInjection;
-
 namespace Sawnet.Core.Modules;
 
 [AttributeUsage(AttributeTargets.Class)]
@@ -20,21 +18,4 @@ public class ModulesToIncludeAttribute : Attribute
     }
 
     public IReadOnlyList<SawnetModule> Modules => _modules.AsReadOnly();
-}
-
-public static class ModulesToIncludeExtensions
-{
-    public static void ConfigureSafeServices(this ModulesToIncludeAttribute modulesToIncludeAttribute,
-        IServiceCollection services)
-    {
-        if (modulesToIncludeAttribute is null)
-        {
-            return;
-        }
-
-        foreach (var module in modulesToIncludeAttribute.Modules)
-        {
-            module.ConfigureServices(services);
-        }
-    }
 }

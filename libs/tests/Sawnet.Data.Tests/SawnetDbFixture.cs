@@ -45,6 +45,11 @@ public abstract class SawnetDbFixture<TDbContext> : IDisposable
         _disposed = true;
     }
 
+    protected virtual void OnConfigureServices(IServiceCollection services)
+    {
+        
+    }
+    
     private void MigrateDbContext()
     {
         var dbContext = _serviceProvider.GetRequiredService<TDbContext>();
@@ -58,7 +63,9 @@ public abstract class SawnetDbFixture<TDbContext> : IDisposable
         var modulesToIncludeAttribute = GetType().GetCustomAttribute<ModulesToIncludeAttribute>();
         modulesToIncludeAttribute.ConfigureSafeServices(services);
 
+        OnConfigureServices(services);
         ConfigureDbContext(services);
+        
         return services.BuildServiceProvider();
     }
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Diagnostics.CodeAnalysis;
+using Microsoft.EntityFrameworkCore;
 using Sawnet.Core.BaseTypes;
 using Sawnet.Core.Events;
 
@@ -7,6 +8,7 @@ namespace Sawnet.Data.DbContexts;
 public class SawnetDbContext<TDbContext> : DbContext, IDbContext
     where TDbContext : SawnetDbContext<TDbContext>
 {
+    [ExcludeFromCodeCoverage]
     public SawnetDbContext()
     {
     }
@@ -18,6 +20,7 @@ public class SawnetDbContext<TDbContext> : DbContext, IDbContext
 
     protected IDomainEventPublisher DomainEventDomainEventPublisher { get; }
     
+    [ExcludeFromCodeCoverage]
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         if (!optionsBuilder.IsConfigured)
@@ -34,6 +37,7 @@ public class SawnetDbContext<TDbContext> : DbContext, IDbContext
         return result;
     }
 
+    [ExcludeFromCodeCoverage]
     public override int SaveChanges()
     {
         var result = base.SaveChanges();
