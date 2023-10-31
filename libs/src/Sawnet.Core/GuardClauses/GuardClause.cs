@@ -2,14 +2,15 @@
 
 public static partial class GuardClause
 {
-    public static int? CheckNullableRange(int? value, int minValue, int maxValue)
+    public static int CheckRange(int? value, int minValue, int maxValue)
     {
-        if (value < minValue || value > maxValue)
+        if (value.HasValue && (value < minValue || value > maxValue))
         {
             throw new ArgumentOutOfRangeException(nameof(value),
                 $"The number must be between {minValue} and {maxValue}.");
         }
 
-        return value;
+        return value ?? throw new ArgumentNullException(nameof(value),
+            "The value cannot be null.");
     }
 }

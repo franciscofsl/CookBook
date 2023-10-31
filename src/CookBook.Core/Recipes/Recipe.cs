@@ -18,6 +18,7 @@ public class Recipe : AggregateRoot<RecipeId>
         IsDraft = true;
         PreparationTime = PreparationTime.Empty;
         Ingredients = Ingredients.Empty;
+        Ratings = Ratings.Empty;
     }
 
     public RecipeTitle Title { get; set; }
@@ -26,7 +27,9 @@ public class Recipe : AggregateRoot<RecipeId>
 
     public PreparationTime PreparationTime { get; set; }
 
-    public Ingredients Ingredients { get; set; }
+    public Ingredients Ingredients { get; init; }
+    
+    public Ratings Ratings { get; init; }
 
     public bool IsDraft { get; private set; }
 

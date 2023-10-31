@@ -1,4 +1,5 @@
 ﻿using CookBook.Core.Recipes.Enums;
+using Sawnet.Core.BaseTypes;
 
 namespace CookBook.Core.Tests.Recipes.ValueObjects;
 
@@ -46,6 +47,18 @@ public class IngredientsTest
         section.Order.Should().Be(1);
         milk.Order.Should().Be(2);
         fish.Order.Should().Be(3);
+    }
+
+    [Fact]
+    public void Should_Get_Ingredient_Line_Atomic_Values()
+    {
+        var ingredients = Ingredients.Empty;
+        var section = ingredients.AddSection("New Section");
+
+        foreach (var getAtomicValue in section.InvokeGetAtomicValues())
+        {
+            getAtomicValue.Should().NotBeNull();
+        }
     }
 
     [Fact]

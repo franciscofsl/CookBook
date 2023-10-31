@@ -23,7 +23,7 @@ public record PreparationTime : ValueObject
         return new PreparationTime
         {
             Hours = hours,
-            Minutes = GuardClause.CheckNullableRange(minutes, MinTimeValue, MaxTimeValue)
+            Minutes = GuardClause.CheckRange(minutes, MinTimeValue, MaxTimeValue)
         };
     }
 

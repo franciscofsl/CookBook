@@ -17,7 +17,13 @@ public class RecipeConfiguration : IEntityTypeConfiguration<Recipe>
         builder.OwnsOne(_ => _.Ingredients, ownedNavigationBuilder =>
         {
             ownedNavigationBuilder.ToJson();
-            ownedNavigationBuilder.OwnsMany(si => si.Lines);
+            ownedNavigationBuilder.OwnsMany(_ => _.Lines);
+        });
+
+        builder.OwnsOne(_ => _.Ratings, ownedNavigationBuilder =>
+        {
+            ownedNavigationBuilder.ToJson();
+            ownedNavigationBuilder.OwnsMany(si => si.Scores);
         });
 
         builder.Ignore(_ => _.Events);
