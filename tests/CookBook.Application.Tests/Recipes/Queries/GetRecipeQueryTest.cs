@@ -27,8 +27,8 @@ public class GetRecipeQueryTest
         queryResult.Id.Should().Be(recipe.Id);
         queryResult.Description.Should().Be(recipe.Description);
         queryResult.Title.Should().Be(recipe.Title);
-        queryResult.TotalHours.Should().Be(recipe.PreparationTime.Hours);
-        queryResult.TotalMinutes.Should().Be(recipe.PreparationTime.Minutes);
+        queryResult.TotalHours.Should().Be(recipe.PreparationTime?.Hours);
+        queryResult.TotalMinutes.Should().Be(recipe.PreparationTime?.Minutes);
     }
 }
 

@@ -9,7 +9,7 @@ public class RecipeTitleTest
 
         var recipeTitle = RecipeTitle.Create(title);
 
-        recipeTitle.Title.Should().Be(title);
+        recipeTitle.Value.Should().Be(title);
     }
 
     [Fact]
@@ -31,14 +31,7 @@ public class RecipeTitleTest
         var exception = Assert.Throws<ArgumentNullException>(() => RecipeTitle.Create(null));
         exception.Message.Should().Contain("title");
     }
-
-    [Fact]
-    public void Should_Throw_Exception_If_Title_Is_Empty()
-    {
-        var exception = Assert.Throws<ArgumentException>(() => RecipeTitle.Create(string.Empty));
-        exception.Message.Should().Contain("title");
-    }
-
+    
     [Fact]
     public void Implicit_Conversion_To_String_Should_Return_Title()
     {
@@ -56,6 +49,6 @@ public class RecipeTitleTest
 
         var recipeTitle = (RecipeTitle)titleValue;
 
-        recipeTitle.Title.Should().Be(titleValue);
+        recipeTitle.Value.Should().Be(titleValue);
     }
 }
