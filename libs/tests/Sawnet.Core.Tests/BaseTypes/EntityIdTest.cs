@@ -11,7 +11,7 @@ public class EntityIdTest
 
         var entityId = new TestEntityId(expectedId);
 
-        entityId.Id.Should().Be(expectedId);
+        entityId.Value.Should().Be(expectedId);
 
         foreach (var value in entityId.InvokeGetAtomicValues())
         {
