@@ -15,6 +15,6 @@ public class CreateRecipeCommandTest
         var commandHandler = new CreateRecipeCommandHandler(_recipesRepository);
 
         var result = await commandHandler.Handle(new CreateRecipeCommand());
-        result.IsDraft.Should().BeTrue();
+        result.Published.Should().BeFalse();
     }
 }

@@ -4,8 +4,8 @@ namespace CookBook.Core.Recipes.ValueObjects;
 
 public record PreparationTime : ValueObject
 {
-    private const int MinTimeValue = 0;
-    private const int MaxTimeValue = 59;
+    public const int MinTimeValue = 0;
+    public const int MaxTimeValue = 59;
 
     public static readonly PreparationTime Empty = new();
 
@@ -13,7 +13,7 @@ public record PreparationTime : ValueObject
     {
     }
 
-    public static PreparationTime Create(int? hours, int? minutes = null)
+    public static PreparationTime Create(int? hours, int minutes = MinTimeValue)
     {
         if (hours is < MinTimeValue)
         {
@@ -23,13 +23,13 @@ public record PreparationTime : ValueObject
         return new PreparationTime
         {
             Hours = hours,
-            Minutes = GuardClause.CheckNullableRange(minutes, MinTimeValue, MaxTimeValue)
+            Minutes = GuardClause.CheckRange(minutes, MinTimeValue, MaxTimeValue)
         };
     }
 
     public int? Hours { get; private init; }
 
-    public int? Minutes { get; private init; }
+    public int Minutes { get; private init; }
 
     protected override IEnumerable<object> GetAtomicValues()
     {
@@ -45,7 +45,7 @@ public record PreparationTime : ValueObject
             builder.Append($"{Hours} h ");
         }
 
-        if (Minutes.HasValue)
+        if (Minutes > 0)
         {
             builder.Append($"{Minutes} min");
         }

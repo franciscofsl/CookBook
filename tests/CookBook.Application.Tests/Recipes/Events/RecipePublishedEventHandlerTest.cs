@@ -3,7 +3,7 @@
 public class RecipePublishedEventHandlerTest
 {
     [Fact]
-    public async Task Should_Not_Handle_Event_With_Draft_Recipe()
+    public async Task Should_Not_Handle_Event_With_Not_Published_Recipe()
     {
         var fakeLogger = Substitute.For<IFakeLogger>();
         var recipe = RecipeBuilder.Create().Build();
@@ -14,6 +14,6 @@ public class RecipePublishedEventHandlerTest
         {
             await domainEvent.Handle(new RecipePublished(recipe));
         });
-        exception.Message.Should().Be("Can't notify published recipe if recipe is draft.");
+        exception.Message.Should().Be("Can't notify published recipe if recipe is not published.");
     } 
 }

@@ -22,10 +22,7 @@ public class RecipesRepositoryTest : DataTest
     {
         var repository = GetRequiredService<IRecipesRepository>();
 
-        var recipe = await repository.InsertAsync(new Recipe(new RecipeId(Guid.NewGuid()))
-        {
-            Title = (RecipeTitle)"Title"
-        });
+        var recipe = await repository.InsertAsync(new Recipe(new RecipeId(Guid.NewGuid())));
 
         await repository.DeleteAsync(recipe);
 
@@ -43,9 +40,8 @@ public class RecipesRepositoryTest : DataTest
             .Create()
             .SetTitle((RecipeTitle)"Title")
             .SetDescription((RecipeDescription)"Description")
+            .SetPreparationTime(4, 6)
             .Build();
-
-        recipe.PreparationTime = PreparationTime.Create(2, 40);
 
         await repository.InsertAsync(recipe);
 

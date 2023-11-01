@@ -24,8 +24,8 @@ public class GetRecipeQueryHandler : IQueryHandler<GetRecipeQuery, RecipeDto>
             Id = recipe.Id,
             Title = recipe.Title,
             Description = recipe.Description,
-            TotalHours = recipe.PreparationTime.Hours,
-            TotalMinutes = recipe.PreparationTime.Minutes
+            TotalHours = recipe.PreparationTime?.Hours,
+            TotalMinutes = recipe.PreparationTime?.Minutes
         };
     }
 }

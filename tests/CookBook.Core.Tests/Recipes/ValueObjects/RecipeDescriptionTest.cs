@@ -9,7 +9,7 @@ public class RecipeDescriptionTest
 
         var recipeDescription = RecipeDescription.Create(description);
 
-        recipeDescription.Description.Should().Be(description);
+        recipeDescription.Value.Should().Be(description);
     }
 
     [Fact]
@@ -31,14 +31,7 @@ public class RecipeDescriptionTest
         var exception = Assert.Throws<ArgumentNullException>(() => RecipeDescription.Create(null));
         exception.Message.Should().Contain("description");
     }
-
-    [Fact]
-    public void Should_Throw_Exception_If_Description_Is_Empty()
-    {
-        var exception = Assert.Throws<ArgumentException>(() => RecipeDescription.Create(string.Empty));
-        exception.Message.Should().Contain("description");
-    }
-
+    
     [Fact]
     public void Implicit_Conversion_To_String_Should_Return_Description()
     {
@@ -56,6 +49,6 @@ public class RecipeDescriptionTest
 
         var recipeDescription = (RecipeDescription)descriptionValue;
 
-        recipeDescription.Description.Should().Be(descriptionValue);
+        recipeDescription.Value.Should().Be(descriptionValue);
     }
 }

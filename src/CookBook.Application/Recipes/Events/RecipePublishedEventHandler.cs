@@ -14,12 +14,12 @@ public class RecipePublishedEventHandler : IDomainEventHandler<RecipePublished>
 
     public async Task Handle(RecipePublished domainEvent, CancellationToken token = default)
     {
-        if (domainEvent.Recipe.IsDraft)
+        if (domainEvent.Recipe.Published is false)
         {
-            throw new DomainEventException("Can't notify published recipe if recipe is draft.");
+            throw new DomainEventException("Can't notify published recipe if recipe is not published.");
         }
         
-        var emailContent = $"The recipe '{domainEvent.Recipe.Title.Title}' has been published.";
+        var emailContent = $"The recipe '{domainEvent.Recipe.Title.Value}' has been published.";
 
         await _fakeLogger.LogAsync(emailContent);
     }

@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using CookBook.Core.Recipes.Events;
+using CookBook.Core.Recipes.Records;
 using CookBook.Core.Recipes.ValueObjects;
 using Sawnet.Core.Results;
 
@@ -15,20 +16,25 @@ public class Recipe : AggregateRoot<RecipeId>
     public Recipe(RecipeId id)
         : base(id)
     {
-        IsDraft = true;
-        PreparationTime = PreparationTime.Empty;
+        Published = false;
+        Title = RecipeTitle.Empty;
+        Description = RecipeDescription.Empty;
         Ingredients = Ingredients.Empty;
+        Ratings = Ratings.Empty;
+        PreparationTime = PreparationTime.Empty;
     }
 
-    public RecipeTitle Title { get; set; }
+    public RecipeTitle Title { get; private set; }
 
-    public RecipeDescription Description { get; set; }
+    public RecipeDescription Description { get; private set; }
 
-    public PreparationTime PreparationTime { get; set; }
+    public PreparationTime PreparationTime { get; private set; }
 
-    public Ingredients Ingredients { get; set; }
+    public Ingredients Ingredients { get; init; }
 
-    public bool IsDraft { get; private set; }
+    public Ratings Ratings { get; init; }
+
+    public bool Published { get; private set; }
 
     public Result Publish()
     {
@@ -39,26 +45,48 @@ public class Recipe : AggregateRoot<RecipeId>
             return checkResult;
         }
 
-        IsDraft = false;
+        Published = true;
         RaiseDomainEvent(new RecipePublished(this));
+
+        return Result.Ok();
+    }
+
+    public Result Update(RecipeUpdateInfo updateInfo)
+    {
+        if (Published)
+        {
+            if (string.IsNullOrEmpty(updateInfo.Title))
+            {
+                return Result.Failure(RecipeErrors.NotHasTitle);
+            }
+
+            if (string.IsNullOrEmpty(updateInfo.Description))
+            {
+                return Result.Failure(RecipeErrors.NotHasDescription);
+            }
+        }
+        
+        Title = RecipeTitle.Create(updateInfo.Title);
+        Description = RecipeDescription.Create(updateInfo.Description);
+        PreparationTime = PreparationTime.Create(updateInfo.Hours, updateInfo.Minutes);
 
         return Result.Ok();
     }
 
     private Result CheckPublish()
     {
-        if (Title is null)
+        if (Title.IsEmpty())
         {
             return Result.Failure(RecipeErrors.NotHasTitle);
         }
 
-        if (Description is null)
+        if (Description.IsEmpty())
         {
             return Result.Failure(RecipeErrors.NotHasDescription);
         }
 
         if (!Ingredients.Lines.Any())
-        { 
+        {
             return Result.Failure(RecipeErrors.NotHasIngredients);
         }
 

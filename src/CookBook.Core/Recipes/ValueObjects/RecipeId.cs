@@ -4,5 +4,5 @@ public record RecipeId(Guid Id) : EntityId(Id)
 {
     public static explicit operator RecipeId(Guid id) => new(id);
 
-    public static implicit operator Guid(RecipeId id) => id.Id;
+    public static implicit operator Guid(RecipeId id) => id.Value;
 }

@@ -23,7 +23,7 @@ public class TestingDbContext : SawnetDbContext<TestingDbContext>
         base.OnModelCreating(modelBuilder);
         modelBuilder.Entity<SampleAggregate>().HasKey(_ => _.Id);
         modelBuilder.Entity<SampleAggregate>().Property(x => x.Id)
-            .HasConversion(x => x.Id, _ => (SampleId)_)
+            .HasConversion(x => x.Value, _ => (SampleId)_)
             .IsRequired();
     }
 }
@@ -32,7 +32,7 @@ public record SampleId(Guid Id) : EntityId(Id)
 {
     public static explicit operator SampleId(Guid id) => new(id);
 
-    public static implicit operator Guid(SampleId id) => id.Id;
+    public static implicit operator Guid(SampleId id) => id.Value;
 }
 
 public class SampleAggregate : AggregateRoot<SampleId>
