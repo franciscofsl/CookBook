@@ -1,10 +1,10 @@
-﻿#nullable disable
-
+﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+
+#nullable disable
 
 namespace CookBook.Data.Migrations
 {
-    [ExcludeFromCodeCoverage]
     /// <inheritdoc />
     public partial class Initial : Migration
     {
@@ -16,13 +16,17 @@ namespace CookBook.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Title_Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Description_Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PreparationTime = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Title = table.Column<string>(type: "nvarchar(80)", maxLength: 80, nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
+                    Published = table.Column<bool>(type: "bit", nullable: false),
                     Ingredients = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsDraft = table.Column<bool>(type: "bit", nullable: false)
+                    PreparationTime = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Ratings = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
-                constraints: table => { table.PrimaryKey("PK_Recipes", x => x.Id); });
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Recipes", x => x.Id);
+                });
         }
 
         /// <inheritdoc />

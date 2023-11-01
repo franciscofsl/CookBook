@@ -8,9 +8,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace CookBook.Infrastructure.Data.Migrations
+namespace CookBook.Data.Migrations
 {
-    [ExcludeFromCodeCoverage]
     [DbContext(typeof(CookBookDbContext))]
     partial class CookBookDbContextModelSnapshot : ModelSnapshot
     {
@@ -28,7 +27,7 @@ namespace CookBook.Infrastructure.Data.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<bool>("IsDraft")
+                    b.Property<bool>("Published")
                         .HasColumnType("bit");
 
                     b.HasKey("Id");
@@ -90,7 +89,7 @@ namespace CookBook.Infrastructure.Data.Migrations
                             b1.Property<int?>("Hours")
                                 .HasColumnType("int");
 
-                            b1.Property<int?>("Minutes")
+                            b1.Property<int>("Minutes")
                                 .HasColumnType("int");
 
                             b1.HasKey("RecipeId");
@@ -148,8 +147,10 @@ namespace CookBook.Infrastructure.Data.Migrations
                             b1.Property<Guid>("RecipeId")
                                 .HasColumnType("uniqueidentifier");
 
-                            b1.Property<string>("Description")
-                                .HasColumnType("nvarchar(max)");
+                            b1.Property<string>("Value")
+                                .HasMaxLength(250)
+                                .HasColumnType("nvarchar(250)")
+                                .HasColumnName("Description");
 
                             b1.HasKey("RecipeId");
 
@@ -164,8 +165,10 @@ namespace CookBook.Infrastructure.Data.Migrations
                             b1.Property<Guid>("RecipeId")
                                 .HasColumnType("uniqueidentifier");
 
-                            b1.Property<string>("Title")
-                                .HasColumnType("nvarchar(max)");
+                            b1.Property<string>("Value")
+                                .HasMaxLength(80)
+                                .HasColumnType("nvarchar(80)")
+                                .HasColumnName("Title");
 
                             b1.HasKey("RecipeId");
 

@@ -2,6 +2,9 @@
 
 public sealed record RecipeTitle : ValueObject
 {
+    public static readonly int MaxLenght = 80;
+    public static readonly RecipeTitle Empty = Create(string.Empty);
+
     private RecipeTitle()
     {
     }
@@ -10,18 +13,20 @@ public sealed record RecipeTitle : ValueObject
     {
         return new RecipeTitle
         {
-            Title = GuardClause.NotNullOrEmpty(title, nameof(title))
+            Value = GuardClause.NotNull(title, nameof(title))
         };
     }
 
-    public string Title { get; private init; }
+    public string Value { get; private init; }
 
     protected override IEnumerable<object> GetAtomicValues()
     {
-        yield return Title;
+        yield return Value;
     }
 
-    public static implicit operator string(RecipeTitle title) => title?.Title;
+    public static implicit operator string(RecipeTitle title) => title?.Value;
 
     public static explicit operator RecipeTitle(string title) => Create(title);
+
+    public bool IsEmpty() => Value == string.Empty;
 }
