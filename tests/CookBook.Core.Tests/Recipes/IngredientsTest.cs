@@ -1,7 +1,6 @@
 ﻿using CookBook.Core.Recipes.Enums;
-using Sawnet.Core.BaseTypes;
 
-namespace CookBook.Core.Tests.Recipes.ValueObjects;
+namespace CookBook.Core.Tests.Recipes;
 
 public class IngredientsTest
 {
@@ -58,17 +57,6 @@ public class IngredientsTest
         foreach (var getAtomicValue in section.InvokeGetAtomicValues())
         {
             getAtomicValue.Should().NotBeNull();
-        }
-    }
-
-    [Fact]
-    public void Should_Get_Atomic_Values()
-    {
-        var ingredients = Ingredients.Empty;
-
-        foreach (var atomicValue in ingredients.InvokeGetAtomicValues())
-        {
-            atomicValue.Should().NotBeNull();
         }
     }
 }

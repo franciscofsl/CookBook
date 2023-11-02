@@ -1,8 +1,9 @@
-﻿using CookBook.Core.Recipes.ValueObjects;
+﻿using System.Collections;
+using CookBook.Core.Recipes.ValueObjects;
 
 namespace CookBook.Core.Recipes;
 
-public record Ingredients : ValueObject
+public sealed record Ingredients : IEnumerable<IngredientLine>
 {
     private readonly List<IngredientLine> _lines = new();
 
@@ -12,7 +13,7 @@ public record Ingredients : ValueObject
     {
     }
 
-    public virtual IReadOnlyCollection<IngredientLine> Lines => _lines.AsReadOnly();
+    public IReadOnlyCollection<IngredientLine> Lines => _lines.AsReadOnly();
 
     public IngredientLine AddIngredient(string description)
     {
@@ -30,8 +31,13 @@ public record Ingredients : ValueObject
 
     private int GetNextOrder() => _lines.Count + 1;
 
-    protected override IEnumerable<object> GetAtomicValues()
+    public IEnumerator<IngredientLine> GetEnumerator()
     {
-        return _lines;
+        return _lines.GetEnumerator();
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
     }
 }
