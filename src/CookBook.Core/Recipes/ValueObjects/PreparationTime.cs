@@ -2,7 +2,7 @@
 
 namespace CookBook.Core.Recipes.ValueObjects;
 
-public record PreparationTime : ValueObject
+public sealed record PreparationTime : ValueObject
 {
     public const int MinTimeValue = 0;
     public const int MaxTimeValue = 59;

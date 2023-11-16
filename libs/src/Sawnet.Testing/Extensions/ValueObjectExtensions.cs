@@ -6,7 +6,6 @@ namespace Sawnet.Testing.Extensions;
 public static class ValueObjectExtensions
 {
     public static object[] InvokeGetAtomicValues<TValueObject>(this TValueObject valueObject)
-        where TValueObject : ValueObject
     {
         var methodInfo = typeof(TValueObject)
             .GetMethods(BindingFlags.NonPublic | BindingFlags.Instance)

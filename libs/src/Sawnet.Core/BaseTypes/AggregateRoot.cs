@@ -8,16 +8,7 @@ public abstract class AggregateRoot<TKey> : IEntityWithDomainEvents
 {
     private readonly List<IDomainEvent> _domainEvents = new();
 
-    public TKey Id { get; }
-
-    protected AggregateRoot()
-    {
-    }
-
-    protected AggregateRoot(TKey id)
-    {
-        Id = GuardClause.NotNull(id, nameof(id));
-    }
+    public TKey Id { get; protected init; }
 
     public IReadOnlyList<IDomainEvent> Events => _domainEvents.AsReadOnly();
 

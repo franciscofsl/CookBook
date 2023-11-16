@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Sawnet.Core.BaseTypes;
 using Sawnet.Core.Events;
 using Sawnet.Data.DbContexts;
 
@@ -27,20 +26,3 @@ public class TestingDbContext : SawnetDbContext<TestingDbContext>
             .IsRequired();
     }
 }
-
-public record SampleId(Guid Id) : EntityId(Id)
-{
-    public static explicit operator SampleId(Guid id) => new(id);
-
-    public static implicit operator Guid(SampleId id) => id.Value;
-}
-
-public class SampleAggregate : AggregateRoot<SampleId>
-{
-    public SampleAggregate(SampleId id) : base(id)
-    {
-        RaiseDomainEvent(new SampleModelCreated(this));
-    }
-}
-
-public record SampleModelCreated(SampleAggregate Model) : IDomainEvent;
