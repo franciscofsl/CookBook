@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using CookBook.Core.Recipes.Events;
+﻿using CookBook.Core.Recipes.Events;
 using CookBook.Core.Recipes.Records;
 using CookBook.Core.Recipes.ValueObjects;
 using Sawnet.Core.Results;
@@ -8,20 +7,22 @@ namespace CookBook.Core.Recipes;
 
 public class Recipe : AggregateRoot<RecipeId>
 {
-    [ExcludeFromCodeCoverage]
     private Recipe()
     {
     }
 
-    public Recipe(RecipeId id)
-        : base(id)
+    public static Recipe Create(RecipeId id)
     {
-        Published = false;
-        Title = RecipeTitle.Empty;
-        Description = RecipeDescription.Empty;
-        Ingredients = Ingredients.Empty;
-        Ratings = Ratings.Empty;
-        PreparationTime = PreparationTime.Empty;
+        return new Recipe
+        {
+            Id = id,
+            Published = false,
+            Title = RecipeTitle.Empty,
+            Description = RecipeDescription.Empty,
+            Ingredients = Ingredients.Empty,
+            Ratings = Ratings.Empty,
+            PreparationTime = PreparationTime.Empty
+        };
     }
 
     public RecipeTitle Title { get; private set; }
@@ -38,11 +39,9 @@ public class Recipe : AggregateRoot<RecipeId>
 
     public Result Publish()
     {
-        var checkResult = CheckPublish();
-
-        if (checkResult.IsFailure)
+        if (CheckPublish() is { IsFailure: true } result)
         {
-            return checkResult;
+            return result;
         }
 
         Published = true;
@@ -53,19 +52,11 @@ public class Recipe : AggregateRoot<RecipeId>
 
     public Result Update(RecipeUpdateInfo updateInfo)
     {
-        if (Published)
+        if (Published && CheckUpdateInfo(updateInfo) is { IsFailure : true } result)
         {
-            if (string.IsNullOrEmpty(updateInfo.Title))
-            {
-                return Result.Failure(RecipeErrors.NotHasTitle);
-            }
-
-            if (string.IsNullOrEmpty(updateInfo.Description))
-            {
-                return Result.Failure(RecipeErrors.NotHasDescription);
-            }
+            return result;
         }
-        
+
         Title = RecipeTitle.Create(updateInfo.Title);
         Description = RecipeDescription.Create(updateInfo.Description);
         PreparationTime = PreparationTime.Create(updateInfo.Hours, updateInfo.Minutes);
@@ -88,6 +79,21 @@ public class Recipe : AggregateRoot<RecipeId>
         if (!Ingredients.Lines.Any())
         {
             return Result.Failure(RecipeErrors.NotHasIngredients);
+        }
+
+        return Result.Ok();
+    }
+
+    private Result CheckUpdateInfo(RecipeUpdateInfo updateInfo)
+    {
+        if (string.IsNullOrEmpty(updateInfo.Title))
+        {
+            return Result.Failure(RecipeErrors.NotHasTitle);
+        }
+
+        if (string.IsNullOrEmpty(updateInfo.Description))
+        {
+            return Result.Failure(RecipeErrors.NotHasDescription);
         }
 
         return Result.Ok();

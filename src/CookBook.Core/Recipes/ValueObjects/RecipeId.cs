@@ -1,8 +1,20 @@
 ﻿namespace CookBook.Core.Recipes.ValueObjects;
 
-public record RecipeId(Guid Id) : EntityId(Id)
+public record RecipeId : EntityId
 {
-    public static explicit operator RecipeId(Guid id) => new(id);
+    private RecipeId()
+    {
+    }
+
+    public static RecipeId Create(Guid value)
+    {
+        return new RecipeId
+        {
+            Value = value
+        };
+    }
+
+    public static explicit operator RecipeId(Guid id) => Create(id);
 
     public static implicit operator Guid(RecipeId id) => id.Value;
 }

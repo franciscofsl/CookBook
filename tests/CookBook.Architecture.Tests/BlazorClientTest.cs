@@ -15,12 +15,12 @@ public class BlazorClientTest
             Namespaces.Server
         };
 
-        var testResult = Types
+        var result = Types
             .InAssembly(assembly)
             .ShouldNot()
             .HaveDependencyOnAny(otherProjects)
             .GetResult();
 
-        testResult.IsSuccessful.Should().BeTrue();
+        result.IsSuccessful.Should().BeTrue();
     }
 }

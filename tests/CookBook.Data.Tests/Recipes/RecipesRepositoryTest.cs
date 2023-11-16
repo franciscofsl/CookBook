@@ -13,7 +13,7 @@ public class RecipesRepositoryTest : DataTest
     public async Task Should_Insert_Recipe()
     {
         var repository = GetRequiredService<IRecipesRepository>();
-        var recipe = await repository.InsertAsync(new Recipe(new RecipeId(Guid.NewGuid())));
+        var recipe = await repository.InsertAsync(Recipe.Create(RecipeId.Create(Guid.NewGuid())));
         recipe.Should().NotBeNull();
     }
 
@@ -22,7 +22,7 @@ public class RecipesRepositoryTest : DataTest
     {
         var repository = GetRequiredService<IRecipesRepository>();
 
-        var recipe = await repository.InsertAsync(new Recipe(new RecipeId(Guid.NewGuid())));
+        var recipe = await repository.InsertAsync(Recipe.Create(RecipeId.Create(Guid.NewGuid())));
 
         await repository.DeleteAsync(recipe);
 

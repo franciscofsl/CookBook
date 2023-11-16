@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CookBook.Data.Migrations
 {
+    [ExcludeFromCodeCoverage]
     [DbContext(typeof(CookBookDbContext))]
     partial class CookBookDbContextModelSnapshot : ModelSnapshot
     {

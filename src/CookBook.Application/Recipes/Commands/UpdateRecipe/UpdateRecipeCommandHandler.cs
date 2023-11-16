@@ -17,7 +17,7 @@ public class UpdateRecipeCommandHandler : ICommandHandler<UpdateRecipeCommand, R
 
     public async Task<Result<Recipe>> Handle(UpdateRecipeCommand command, CancellationToken token = default)
     {
-        var recipe = await _recipesRepository.GetAsync(new RecipeId(command.RecipeId));
+        var recipe = await _recipesRepository.GetAsync(RecipeId.Create(command.RecipeId));
 
         var result = recipe
             .Update(new RecipeUpdateInfo(command.Title, command.Description, command.Hours, command.Minutes));
