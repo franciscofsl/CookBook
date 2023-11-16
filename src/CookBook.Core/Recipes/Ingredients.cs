@@ -3,7 +3,7 @@ using CookBook.Core.Recipes.ValueObjects;
 
 namespace CookBook.Core.Recipes;
 
-public sealed record Ingredients : IEnumerable<IngredientLine>
+public sealed class Ingredients : IEnumerable<IngredientLine>
 {
     private readonly List<IngredientLine> _lines = new();
 

@@ -3,7 +3,7 @@ using CookBook.Core.Recipes.ValueObjects;
 
 namespace CookBook.Core.Recipes;
 
-public sealed record Ratings : IEnumerable<Score>
+public sealed class Ratings : IEnumerable<Score>
 {
     private readonly List<Score> _scores = new();
 

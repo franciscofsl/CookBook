@@ -10,8 +10,7 @@ public static class ValueObjectExtensions
     {
         var methodInfo = typeof(TValueObject)
             .GetMethods(BindingFlags.NonPublic | BindingFlags.Instance)
-            .Where(m => m.Name == "GetAtomicValues")
-            .FirstOrDefault();
+            .FirstOrDefault(m => m.Name == "GetAtomicValues");
 
         if (methodInfo == null)
         {
