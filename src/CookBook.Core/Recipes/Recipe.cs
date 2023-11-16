@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using CookBook.Core.Recipes.Events;
+﻿using CookBook.Core.Recipes.Events;
 using CookBook.Core.Recipes.Records;
 using CookBook.Core.Recipes.ValueObjects;
 using Sawnet.Core.Results;
@@ -8,20 +7,22 @@ namespace CookBook.Core.Recipes;
 
 public class Recipe : AggregateRoot<RecipeId>
 {
-    [ExcludeFromCodeCoverage]
     private Recipe()
     {
     }
 
-    public Recipe(RecipeId id)
-        : base(id)
+    public static Recipe Create(RecipeId id)
     {
-        Published = false;
-        Title = RecipeTitle.Empty;
-        Description = RecipeDescription.Empty;
-        Ingredients = Ingredients.Empty;
-        Ratings = Ratings.Empty;
-        PreparationTime = PreparationTime.Empty;
+        return new Recipe
+        {
+            Id = id,
+            Published = false,
+            Title = RecipeTitle.Empty,
+            Description = RecipeDescription.Empty,
+            Ingredients = Ingredients.Empty,
+            Ratings = Ratings.Empty,
+            PreparationTime = PreparationTime.Empty
+        };
     }
 
     public RecipeTitle Title { get; private set; }
@@ -65,7 +66,7 @@ public class Recipe : AggregateRoot<RecipeId>
                 return Result.Failure(RecipeErrors.NotHasDescription);
             }
         }
-        
+
         Title = RecipeTitle.Create(updateInfo.Title);
         Description = RecipeDescription.Create(updateInfo.Description);
         PreparationTime = PreparationTime.Create(updateInfo.Hours, updateInfo.Minutes);

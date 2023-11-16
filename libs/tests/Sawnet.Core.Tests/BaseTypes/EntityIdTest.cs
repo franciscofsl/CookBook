@@ -9,7 +9,7 @@ public class EntityIdTest
     {
         var expectedId = Guid.NewGuid();
 
-        var entityId = new TestEntityId(expectedId);
+        var entityId =  EntityTest.TestEntityId.Create(expectedId);
 
         entityId.Value.Should().Be(expectedId);
 
@@ -18,6 +18,4 @@ public class EntityIdTest
             value.Should().NotBeNull();
         }
     }
-
-    private record TestEntityId(Guid Id) : EntityId(Id);
 }

@@ -1,3 +1,5 @@
+using System.Reflection;
+
 namespace CookBook.Architecture.Tests;
 
 public static class Namespaces
@@ -7,4 +9,5 @@ public static class Namespaces
     public const string Infrastructure = "CookBook.Infrastructure";
     public const string Presentation = "CookBook.Blazor.Client";
     public const string Server = "CookBook.Blazor.Server";
+    public const string Data = "CookBook.Data";
 }

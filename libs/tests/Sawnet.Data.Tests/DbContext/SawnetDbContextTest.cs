@@ -16,7 +16,7 @@ public class SawnetDbContextTest : TestingTest
         var repository = GetRequiredService<IRepository<SampleAggregate, SampleId>>();
 
         await FluentActions
-            .Awaiting(async () => await repository.InsertAsync(new SampleAggregate(new SampleId(Guid.NewGuid()))))
+            .Awaiting(async () => await repository.InsertAsync(SampleAggregate.Create(SampleId.Create(Guid.NewGuid()))))
             .Should()
             .NotThrowAsync();
     }

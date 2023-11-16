@@ -5,7 +5,7 @@ public class EntityTest
     [Fact]
     public void Constructor_WithValidId_Should_Set_Id()
     {
-        var entityId = new TestEntityId(Guid.NewGuid());
+        var entityId = TestEntityId.Create(Guid.NewGuid());
 
         var aggregateRoot = new TestEntity(entityId);
 
@@ -36,7 +36,16 @@ public class EntityTest
         }
     }
 
-    private record TestEntityId(Guid Id) : EntityId(Id);
+    public record TestEntityId : EntityId
+    {
+        public static TestEntityId Create(Guid value)
+        {
+            return new TestEntityId
+            {
+                Value = value
+            };
+        }
+    }
 
     private class TestDomainEvent : IDomainEvent
     {

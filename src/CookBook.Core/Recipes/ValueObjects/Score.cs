@@ -1,6 +1,6 @@
 ﻿namespace CookBook.Core.Recipes.ValueObjects;
 
-public record Score : ValueObject
+public sealed record Score : ValueObject
 {
     public const int MinValue = 1;
     public const int MaxValue = 10;

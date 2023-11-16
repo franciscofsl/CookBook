@@ -1,4 +1,6 @@
-﻿namespace CookBook.Architecture.Tests;
+﻿using Sawnet.Core.BaseTypes;
+
+namespace CookBook.Architecture.Tests;
 
 public class CoreTest
 {
@@ -15,12 +17,28 @@ public class CoreTest
             Namespaces.Server
         };
 
-        var testResult = Types
+        var result = Types
             .InAssembly(assembly)
             .ShouldNot()
             .HaveDependencyOnAny(otherProjects)
             .GetResult();
 
-        testResult.IsSuccessful.Should().BeTrue();
+        result.IsSuccessful.Should().BeTrue();
+    }
+
+    [Fact]
+    public void All_Value_Objects_Should_Be_Sealed_Records()
+    {
+        var assembly = typeof(Core.AssemblyReference).Assembly;
+
+        var result = Types
+            .InAssembly(assembly)
+            .That()
+            .Inherit(typeof(ValueObject))
+            .Should()
+            .BeSealed()
+            .GetResult();
+
+        result.IsSuccessful.Should().BeTrue();
     }
 }

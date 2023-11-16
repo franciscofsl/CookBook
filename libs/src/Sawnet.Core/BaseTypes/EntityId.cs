@@ -1,6 +1,11 @@
 ﻿namespace Sawnet.Core.BaseTypes;
 
-public abstract record EntityId(Guid Value) : ValueObject
+public abstract record EntityId
 {
-    protected override IEnumerable<object> GetAtomicValues() => Enumerable.Repeat((object)Value, 1);
+    public Guid Value { get; protected init; }
+
+    protected IEnumerable<object> GetAtomicValues()
+    {
+        yield return Value;
+    }
 }

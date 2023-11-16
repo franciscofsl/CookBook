@@ -10,7 +10,7 @@ public class RecipeTest
     public void Should_Create_Recipe()
     {
         var id = Guid.Empty;
-        var recipe = new Recipe(new RecipeId(id));
+        var recipe = Recipe.Create(RecipeId.Create(id));
 
         recipe.Id.Value.Should().Be(id);
         recipe.Title.Should().Be(RecipeTitle.Empty);
