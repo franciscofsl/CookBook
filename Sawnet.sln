@@ -56,6 +56,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBook.Architecture.Tests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sawnet.Data.Tests", "libs\tests\Sawnet.Data.Tests\Sawnet.Data.Tests.csproj", "{D3716E17-AE24-4A94-9F7E-B66D1CD95F03}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cli", "cli", "{F1E5A611-2E9B-4BCE-8EC5-A5B1D5BDD06E}"
+	ProjectSection(SolutionItems) = preProject
+		libs\src\cli\CLI_README.md = libs\src\cli\CLI_README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sawnet.Cli", "libs\src\cli\Sawnet.Cli\Sawnet.Cli.csproj", "{0C724747-3CD1-4DE7-A769-6E0BF22D031C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +94,8 @@ Global
 		{DFF35AA6-8B34-4B30-9B8B-71CEBC8F56D6} = {1F0CB0B9-7F76-49E0-A95F-4644512E2585}
 		{2C3AF265-23C1-46D2-972D-302AE08D1F59} = {034CFB37-9149-4121-A288-C79658E8BA86}
 		{D3716E17-AE24-4A94-9F7E-B66D1CD95F03} = {2FA392D2-DFDB-48C1-A4C0-BAC6E5C78CE9}
+		{F1E5A611-2E9B-4BCE-8EC5-A5B1D5BDD06E} = {7238394A-B73B-4CD1-97E9-FBA376A5686A}
+		{0C724747-3CD1-4DE7-A769-6E0BF22D031C} = {F1E5A611-2E9B-4BCE-8EC5-A5B1D5BDD06E}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{705D8400-A88B-4629-B009-4BCFA9793AD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -181,5 +190,9 @@ Global
 		{D3716E17-AE24-4A94-9F7E-B66D1CD95F03}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3716E17-AE24-4A94-9F7E-B66D1CD95F03}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3716E17-AE24-4A94-9F7E-B66D1CD95F03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C724747-3CD1-4DE7-A769-6E0BF22D031C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C724747-3CD1-4DE7-A769-6E0BF22D031C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C724747-3CD1-4DE7-A769-6E0BF22D031C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C724747-3CD1-4DE7-A769-6E0BF22D031C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
