@@ -1,5 +1,4 @@
 ﻿using Sawnet.Core.Modules;
-using Sawnet.Data.Tests;
 
 namespace CookBook.Data.Tests;
 

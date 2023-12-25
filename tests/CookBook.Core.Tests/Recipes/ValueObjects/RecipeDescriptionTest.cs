@@ -1,4 +1,6 @@
-﻿namespace CookBook.Core.Tests.Recipes.ValueObjects;
+﻿using Sawnet.Testing.Extensions;
+
+namespace CookBook.Core.Tests.Recipes.ValueObjects;
 
 public class RecipeDescriptionTest
 {

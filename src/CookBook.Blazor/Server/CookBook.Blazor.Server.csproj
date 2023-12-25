@@ -14,8 +14,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\..\libs\src\Sawnet.Data\Sawnet.Data.csproj" />
-        <ProjectReference Include="..\..\..\libs\src\Sawnet.Server\Sawnet.Server.csproj" />
         <ProjectReference Include="..\..\CookBook.Application\CookBook.Application.csproj" />
         <ProjectReference Include="..\..\CookBook.Data\CookBook.Data.csproj" />
         <ProjectReference Include="..\..\CookBook.Infrastructure\CookBook.Infrastructure.csproj" />

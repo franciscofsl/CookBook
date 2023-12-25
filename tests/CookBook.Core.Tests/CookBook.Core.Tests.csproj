@@ -24,7 +24,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\libs\src\Sawnet.Testing\Sawnet.Testing.csproj" />
       <ProjectReference Include="..\..\src\CookBook.Core\CookBook.Core.csproj" />
       <ProjectReference Include="..\CookBook.Test\CookBook.Test.csproj" />
     </ItemGroup>

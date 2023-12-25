@@ -13,18 +13,6 @@ public partial class RecipeLayout
 
     [Inject]
     protected NavigationManager NavigationManager { get; set; }
-
-    [Inject]
-    protected DialogService DialogService { get; set; }
-
-    [Inject]
-    protected TooltipService TooltipService { get; set; }
-
-    [Inject]
-    protected ContextMenuService ContextMenuService { get; set; }
-
-    [Inject]
-    protected NotificationService NotificationService { get; set; }
     
     [Inject]
     private RecipesClient RecipesClient { get; set; }

@@ -23,7 +23,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\libs\src\Sawnet.Application\Sawnet.Application.csproj" />
         <ProjectReference Include="..\..\src\CookBook.Application\CookBook.Application.csproj" />
         <ProjectReference Include="..\..\src\CookBook.Blazor\Client\CookBook.Blazor.Client.csproj" />
         <ProjectReference Include="..\..\src\CookBook.Blazor\Server\CookBook.Blazor.Server.csproj" />

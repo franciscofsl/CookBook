@@ -1,4 +1,5 @@
 ﻿using CookBook.Core.Recipes.Enums;
+using Sawnet.Testing.Extensions;
 
 namespace CookBook.Core.Tests.Recipes;
 
