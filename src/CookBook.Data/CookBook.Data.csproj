@@ -4,7 +4,7 @@
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
-    
+
     <ItemGroup>
         <Reference Include="Microsoft.EntityFrameworkCore.InMemory">
             <HintPath>..\..\..\.nuget\packages\microsoft.entityframeworkcore.inmemory\7.0.11\lib\net6.0\Microsoft.EntityFrameworkCore.InMemory.dll</HintPath>
@@ -15,16 +15,16 @@
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer"/>
+        <PackageReference Include="Sawnet.Data"/>
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Migrations\" />
+        <Folder Include="Migrations\"/>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\libs\src\Sawnet.Data\Sawnet.Data.csproj" />
-      <ProjectReference Include="..\CookBook.Core\CookBook.Core.csproj" />
+        <ProjectReference Include="..\CookBook.Core\CookBook.Core.csproj"/>
     </ItemGroup>
 
 </Project>

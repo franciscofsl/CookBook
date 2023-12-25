@@ -6,8 +6,6 @@
     </PropertyGroup>
  
     <ItemGroup>
-      <ProjectReference Include="..\..\libs\src\Sawnet.Data\Sawnet.Data.csproj" />
-      <ProjectReference Include="..\..\libs\src\Sawnet.Infrastructure\Sawnet.Infrastructure.csproj" />
       <ProjectReference Include="..\CookBook.Application\CookBook.Application.csproj" />
       <ProjectReference Include="..\CookBook.Core\CookBook.Core.csproj" />
     </ItemGroup>

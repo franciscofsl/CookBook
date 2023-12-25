@@ -6,13 +6,8 @@
         <Nullable>disable</Nullable>
     </PropertyGroup>
 
-
     <ItemGroup>
-      <ProjectReference Include="..\..\libs\src\Sawnet.Core\Sawnet.Core.csproj" />
+        <PackageReference Include="Sawnet.Core" />
     </ItemGroup>
-
-
-
-
 
 </Project>
