@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
-using Radzen;
 
 namespace CookBook.Blazor.Client.Shared
 {
