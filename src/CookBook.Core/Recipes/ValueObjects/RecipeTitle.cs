@@ -13,7 +13,7 @@ public sealed record RecipeTitle : ValueObject
     {
         return new RecipeTitle
         {
-            Value = GuardClause.NotNull(title, nameof(title))
+            Value = Ensure.NotNull(title, nameof(title))
         };
     }
 

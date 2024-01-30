@@ -13,7 +13,7 @@ public sealed record Score : ValueObject
     {
         return new Score
         {
-            Value = GuardClause.CheckRange(value, MinValue, MaxValue),
+            Value = Ensure.InRange(value, MinValue, MaxValue),
             Message = message
         };
     }

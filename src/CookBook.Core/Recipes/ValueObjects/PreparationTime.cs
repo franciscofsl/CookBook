@@ -23,7 +23,7 @@ public sealed record PreparationTime : ValueObject
         return new PreparationTime
         {
             Hours = hours,
-            Minutes = GuardClause.CheckRange(minutes, MinTimeValue, MaxTimeValue)
+            Minutes = Ensure.InRange(minutes, MinTimeValue, MaxTimeValue)
         };
     }
 

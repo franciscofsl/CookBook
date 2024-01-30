@@ -6,11 +6,11 @@ public record RecipeId : EntityId
     {
     }
 
-    public static RecipeId Create(Guid value)
+    public static RecipeId Create(Guid? value = null)
     {
         return new RecipeId
         {
-            Value = value
+            Value = value ?? Guid.NewGuid()
         };
     }
 
