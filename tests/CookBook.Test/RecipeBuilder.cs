@@ -43,8 +43,10 @@ public class RecipeBuilder
         var id = (RecipeId)Guid.NewGuid();
         var recipe = Recipe.Create(id);
 
-        recipe.Update(new RecipeUpdateInfo(_title, _description, _preparationTime.Hours, _preparationTime.Minutes));
-
+        recipe.Title = RecipeTitle.Create(_title);
+        recipe.Description = RecipeDescription.Create(_description);
+        recipe.PreparationTime = _preparationTime;
+        
         return recipe;
     }
 }

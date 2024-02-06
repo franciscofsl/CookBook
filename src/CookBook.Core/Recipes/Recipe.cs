@@ -25,11 +25,11 @@ public class Recipe : AggregateRoot<RecipeId>
         };
     }
 
-    public RecipeTitle Title { get; private set; }
+    public RecipeTitle Title { get; set; }
 
-    public RecipeDescription Description { get; private set; }
+    public RecipeDescription Description { get; set; }
 
-    public PreparationTime PreparationTime { get; private set; }
+    public PreparationTime PreparationTime { get; set; }
 
     public Ingredients Ingredients { get; init; }
 
@@ -50,20 +50,6 @@ public class Recipe : AggregateRoot<RecipeId>
         return Result.Ok();
     }
 
-    public Result Update(RecipeUpdateInfo updateInfo)
-    {
-        if (Published && CheckUpdateInfo(updateInfo) is { IsFailure : true } result)
-        {
-            return result;
-        }
-
-        Title = RecipeTitle.Create(updateInfo.Title);
-        Description = RecipeDescription.Create(updateInfo.Description);
-        PreparationTime = PreparationTime.Create(updateInfo.Hours, updateInfo.Minutes);
-
-        return Result.Ok();
-    }
-
     private Result CheckPublish()
     {
         if (Title.IsEmpty())
@@ -79,21 +65,6 @@ public class Recipe : AggregateRoot<RecipeId>
         if (!Ingredients.Lines.Any())
         {
             return Result.Failure(RecipeErrors.NotHasIngredients);
-        }
-
-        return Result.Ok();
-    }
-
-    private Result CheckUpdateInfo(RecipeUpdateInfo updateInfo)
-    {
-        if (string.IsNullOrEmpty(updateInfo.Title))
-        {
-            return Result.Failure(RecipeErrors.NotHasTitle);
-        }
-
-        if (string.IsNullOrEmpty(updateInfo.Description))
-        {
-            return Result.Failure(RecipeErrors.NotHasDescription);
         }
 
         return Result.Ok();
