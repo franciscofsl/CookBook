@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using CookBook.Core.Menus;
+using Microsoft.Extensions.Configuration;
 
 namespace CookBook.Data;
 
@@ -18,5 +19,6 @@ public class CookBookDataModule : SawnetModule
         }
 
         services.AddScoped<IRecipesRepository, RecipesRepository>();
+        services.AddScoped<IMenusRepository, MenusRepository>();
     }
 }

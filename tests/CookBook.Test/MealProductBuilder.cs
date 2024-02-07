@@ -9,7 +9,6 @@ public class MealProductBuilder
 {
     private Name _name;
     private Price _price;
-    private RecipeId _associatedRecipeId;
     private string _description;
 
     public static MealProductBuilder Create()
@@ -29,12 +28,6 @@ public class MealProductBuilder
         return this;
     }
 
-    public MealProductBuilder SetAssociatedRecipeId(RecipeId associatedRecipeId)
-    {
-        _associatedRecipeId = associatedRecipeId;
-        return this;
-    }
-
     public MealProductBuilder SetDescription(string description)
     {
         _description = description;
@@ -44,10 +37,9 @@ public class MealProductBuilder
     public MealProduct Build()
     {
         return MealProduct.Create(
-            MealProductId.Create(), 
+            MealProductId.Create(),
             _name ?? Name.Create("DefaultName"),
-            _price ?? Price.Create(0.0m, Tax.Create(21)),  // Provide a default value if not set
-            _associatedRecipeId ?? RecipeId.Create(),  // Provide a default value if not set
+            _price ?? Price.Create(0.0m, Tax.Create(21)), // Provide a default value if not set
             _description
         );
     }

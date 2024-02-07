@@ -6,5 +6,5 @@ namespace CookBook.Application.Menus.Commands.Create;
 
 public record CreateMenuCommand : ICommand<Result<Menu>>
 {
-    public string Name { get; set; }
+    public string Name { get; init; }
 }

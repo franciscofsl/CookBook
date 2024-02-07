@@ -1,4 +1,5 @@
-﻿using Sawnet.Data.DbContexts;
+﻿using CookBook.Core.Menus;
+using Sawnet.Data.DbContexts;
 
 namespace CookBook.Data;
 
@@ -14,6 +15,8 @@ public class CookBookDbContext : SawnetDbContext<CookBookDbContext>
     }
 
     public DbSet<Recipe> Recipes { get; set; }
+    
+    public DbSet<Menu> Menus { get; set; }
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -15,7 +15,7 @@ public class CreateMenuCommandHandlerTest
             Name = "Summer Menu"
         };
 
-        var commandHandler = new CreateMenuCommandHandler(_repository);
+        var commandHandler = new CreateMenuCommandHandler(_repository, new CreateMenuCommandValidator());
 
         var result = await commandHandler.Handle(command);
 
@@ -34,13 +34,10 @@ public class CreateMenuCommandHandlerTest
             Name = null
         };
 
-        var commandHandler = new CreateMenuCommandHandler(_repository);
+        var commandHandler = new CreateMenuCommandHandler(_repository, new CreateMenuCommandValidator());
 
-        var exception = await Assert.ThrowsAsync<ArgumentNullException>(async () =>
-        {
-            _ = await commandHandler.Handle(command);
-        });
-
-        exception.ParamName.Should().Be("Name");
+        var result = await commandHandler.Handle(command);
+        
+        result.IsFailure.Should().BeTrue();
     }
 }

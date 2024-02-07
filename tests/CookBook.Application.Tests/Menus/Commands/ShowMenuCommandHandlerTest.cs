@@ -13,7 +13,7 @@ public class ShowMenuCommandHandlerTest
     {
         var menu = MenuBuilder.Create().Build();
         var mealProduct = MealProductBuilder.Create().Build();
-        menu.MealProducts.Add(mealProduct);
+        menu.AddMealProduct(mealProduct);
         _repository.GetAsync(Arg.Any<MenuId>()).Returns(menu);
 
         var command = new ShowMenuCommand(menu.Id);

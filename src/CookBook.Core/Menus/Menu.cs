@@ -5,14 +5,15 @@ namespace CookBook.Core.Menus;
 
 public sealed class Menu : AggregateRoot<MenuId>
 {
+    private readonly List<MealProduct> _mealProducts = new();
+
     private Menu()
     {
-        MealProducts = MealProducts.Empty;
     }
 
     public Name Name { get; private set; }
 
-    public MealProducts MealProducts { get; }
+    public IReadOnlyCollection<MealProduct> MealProducts => _mealProducts.AsReadOnly();
 
     public bool Visible { get; private set; }
 
@@ -39,5 +40,10 @@ public sealed class Menu : AggregateRoot<MenuId>
     public void Hide()
     {
         Visible = false;
+    }
+
+    public void AddMealProduct(MealProduct mealProduct)
+    {
+        _mealProducts.Add(mealProduct);
     }
 }
