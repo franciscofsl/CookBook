@@ -10,4 +10,8 @@
         <PackageReference Include="Sawnet.Core" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Recipes\Ingredients\" />
+    </ItemGroup>
+
 </Project>

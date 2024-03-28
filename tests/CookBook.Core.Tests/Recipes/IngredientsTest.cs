@@ -17,7 +17,7 @@ public class IngredientsTest
         ingredientLine.Order.Should().Be(1);
         ingredientLine.Type.Should().Be(IngredientType.Ingredient);
 
-        ingredients.Lines.Should().Contain(_ => _.Description == milk);
+        ingredients.Should().Contain(_ => _.Description == milk);
     }
 
     [Fact]
@@ -32,7 +32,7 @@ public class IngredientsTest
         ingredientLine.Order.Should().Be(1);
         ingredientLine.Type.Should().Be(IngredientType.Section);
 
-        ingredients.Lines.Should().Contain(_ => _.Description == section);
+        ingredients.Should().Contain(_ => _.Description == section);
     }
 
     [Fact]
@@ -47,17 +47,5 @@ public class IngredientsTest
         section.Order.Should().Be(1);
         milk.Order.Should().Be(2);
         fish.Order.Should().Be(3);
-    }
-
-    [Fact]
-    public void Should_Get_Ingredient_Line_Atomic_Values()
-    {
-        var ingredients = Ingredients.Empty;
-        var section = ingredients.AddSection("New Section");
-
-        foreach (var getAtomicValue in section.InvokeGetAtomicValues())
-        {
-            getAtomicValue.Should().NotBeNull();
-        }
     }
 }

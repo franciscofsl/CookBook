@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CookBook.Data.Migrations
 {
     [DbContext(typeof(CookBookDbContext))]
-    [Migration("20231101130101_Initial")]
+    [Migration("20240328104147_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -20,10 +20,75 @@ namespace CookBook.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.12")
+                .HasAnnotation("ProductVersion", "8.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("CookBook.Core.Menus.MealProduct", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<Guid>("MenuId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MenuId");
+
+                    b.ToTable("MealProducts", (string)null);
+                });
+
+            modelBuilder.Entity("CookBook.Core.Menus.Menu", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Visible")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Menus");
+                });
+
+            modelBuilder.Entity("CookBook.Core.Recipes.Ingredients.Ingredient", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Order")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("RecipeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RecipeId");
+
+                    b.ToTable("Ingredient");
+                });
 
             modelBuilder.Entity("CookBook.Core.Recipes.Recipe", b =>
                 {
@@ -38,52 +103,83 @@ namespace CookBook.Data.Migrations
                     b.ToTable("Recipes");
                 });
 
-            modelBuilder.Entity("CookBook.Core.Recipes.Recipe", b =>
+            modelBuilder.Entity("CookBook.Core.Menus.MealProduct", b =>
                 {
-                    b.OwnsOne("CookBook.Core.Recipes.Ingredients", "Ingredients", b1 =>
+                    b.HasOne("CookBook.Core.Menus.Menu", null)
+                        .WithMany("MealProducts")
+                        .HasForeignKey("MenuId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.OwnsOne("CookBook.Core.Common.ValueObjects.Price", "Price", b1 =>
                         {
-                            b1.Property<Guid>("RecipeId")
+                            b1.Property<Guid>("MealProductId")
                                 .HasColumnType("uniqueidentifier");
 
-                            b1.HasKey("RecipeId");
+                            b1.Property<decimal>("Value")
+                                .HasColumnType("decimal(18,2)")
+                                .HasColumnName("Price");
 
-                            b1.ToTable("Recipes");
+                            b1.HasKey("MealProductId");
 
-                            b1.ToJson("Ingredients");
+                            b1.ToTable("MealProducts");
 
                             b1.WithOwner()
-                                .HasForeignKey("RecipeId");
+                                .HasForeignKey("MealProductId");
 
-                            b1.OwnsMany("CookBook.Core.Recipes.ValueObjects.IngredientLine", "Lines", b2 =>
+                            b1.OwnsOne("CookBook.Core.Common.ValueObjects.Discount", "Discount", b2 =>
                                 {
-                                    b2.Property<Guid>("IngredientsRecipeId")
+                                    b2.Property<Guid>("PriceMealProductId")
                                         .HasColumnType("uniqueidentifier");
 
-                                    b2.Property<int>("Id")
-                                        .ValueGeneratedOnAdd()
-                                        .HasColumnType("int");
+                                    b2.Property<decimal>("Value")
+                                        .HasColumnType("decimal(18,2)")
+                                        .HasColumnName("Discount");
 
-                                    b2.Property<string>("Description")
-                                        .HasColumnType("nvarchar(max)");
+                                    b2.HasKey("PriceMealProductId");
 
-                                    b2.Property<int>("Order")
-                                        .HasColumnType("int");
-
-                                    b2.Property<string>("Type")
-                                        .IsRequired()
-                                        .HasColumnType("nvarchar(max)");
-
-                                    b2.HasKey("IngredientsRecipeId", "Id");
-
-                                    b2.ToTable("Recipes");
+                                    b2.ToTable("MealProducts");
 
                                     b2.WithOwner()
-                                        .HasForeignKey("IngredientsRecipeId");
+                                        .HasForeignKey("PriceMealProductId");
                                 });
 
-                            b1.Navigation("Lines");
+                            b1.OwnsOne("CookBook.Core.Common.ValueObjects.Tax", "Tax", b2 =>
+                                {
+                                    b2.Property<Guid>("PriceMealProductId")
+                                        .HasColumnType("uniqueidentifier");
+
+                                    b2.Property<decimal>("Value")
+                                        .HasColumnType("decimal(18,2)")
+                                        .HasColumnName("Tax");
+
+                                    b2.HasKey("PriceMealProductId");
+
+                                    b2.ToTable("MealProducts");
+
+                                    b2.WithOwner()
+                                        .HasForeignKey("PriceMealProductId");
+                                });
+
+                            b1.Navigation("Discount");
+
+                            b1.Navigation("Tax");
                         });
 
+                    b.Navigation("Price");
+                });
+
+            modelBuilder.Entity("CookBook.Core.Recipes.Ingredients.Ingredient", b =>
+                {
+                    b.HasOne("CookBook.Core.Recipes.Recipe", null)
+                        .WithMany("Ingredients")
+                        .HasForeignKey("RecipeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CookBook.Core.Recipes.Recipe", b =>
+                {
                     b.OwnsOne("CookBook.Core.Recipes.ValueObjects.PreparationTime", "PreparationTime", b1 =>
                         {
                             b1.Property<Guid>("RecipeId")
@@ -103,46 +199,6 @@ namespace CookBook.Data.Migrations
 
                             b1.WithOwner()
                                 .HasForeignKey("RecipeId");
-                        });
-
-                    b.OwnsOne("CookBook.Core.Recipes.ValueObjects.Ratings", "Ratings", b1 =>
-                        {
-                            b1.Property<Guid>("RecipeId")
-                                .HasColumnType("uniqueidentifier");
-
-                            b1.HasKey("RecipeId");
-
-                            b1.ToTable("Recipes");
-
-                            b1.ToJson("Ratings");
-
-                            b1.WithOwner()
-                                .HasForeignKey("RecipeId");
-
-                            b1.OwnsMany("CookBook.Core.Recipes.ValueObjects.Score", "Scores", b2 =>
-                                {
-                                    b2.Property<Guid>("RatingsRecipeId")
-                                        .HasColumnType("uniqueidentifier");
-
-                                    b2.Property<int>("Id")
-                                        .ValueGeneratedOnAdd()
-                                        .HasColumnType("int");
-
-                                    b2.Property<string>("Message")
-                                        .HasColumnType("nvarchar(max)");
-
-                                    b2.Property<int>("Value")
-                                        .HasColumnType("int");
-
-                                    b2.HasKey("RatingsRecipeId", "Id");
-
-                                    b2.ToTable("Recipes");
-
-                                    b2.WithOwner()
-                                        .HasForeignKey("RatingsRecipeId");
-                                });
-
-                            b1.Navigation("Scores");
                         });
 
                     b.OwnsOne("CookBook.Core.Recipes.ValueObjects.RecipeDescription", "Description", b1 =>
@@ -183,13 +239,19 @@ namespace CookBook.Data.Migrations
 
                     b.Navigation("Description");
 
-                    b.Navigation("Ingredients");
-
                     b.Navigation("PreparationTime");
 
-                    b.Navigation("Ratings");
-
                     b.Navigation("Title");
+                });
+
+            modelBuilder.Entity("CookBook.Core.Menus.Menu", b =>
+                {
+                    b.Navigation("MealProducts");
+                });
+
+            modelBuilder.Entity("CookBook.Core.Recipes.Recipe", b =>
+                {
+                    b.Navigation("Ingredients");
                 });
 #pragma warning restore 612, 618
         }

@@ -10,7 +10,6 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CookBook.Data.Migrations
 {
-    [ExcludeFromCodeCoverage]
     [DbContext(typeof(CookBookDbContext))]
     partial class CookBookDbContextModelSnapshot : ModelSnapshot
     {
@@ -18,7 +17,7 @@ namespace CookBook.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.12")
+                .HasAnnotation("ProductVersion", "8.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -32,7 +31,7 @@ namespace CookBook.Data.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<Guid?>("MenuId")
+                    b.Property<Guid>("MenuId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
@@ -64,6 +63,30 @@ namespace CookBook.Data.Migrations
                     b.ToTable("Menus");
                 });
 
+            modelBuilder.Entity("CookBook.Core.Recipes.Ingredients.Ingredient", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Order")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("RecipeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RecipeId");
+
+                    b.ToTable("Ingredient");
+                });
+
             modelBuilder.Entity("CookBook.Core.Recipes.Recipe", b =>
                 {
                     b.Property<Guid>("Id")
@@ -81,7 +104,9 @@ namespace CookBook.Data.Migrations
                 {
                     b.HasOne("CookBook.Core.Menus.Menu", null)
                         .WithMany("MealProducts")
-                        .HasForeignKey("MenuId");
+                        .HasForeignKey("MenuId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.OwnsOne("CookBook.Core.Common.ValueObjects.Price", "Price", b1 =>
                         {
@@ -141,92 +166,17 @@ namespace CookBook.Data.Migrations
                     b.Navigation("Price");
                 });
 
+            modelBuilder.Entity("CookBook.Core.Recipes.Ingredients.Ingredient", b =>
+                {
+                    b.HasOne("CookBook.Core.Recipes.Recipe", null)
+                        .WithMany("Ingredients")
+                        .HasForeignKey("RecipeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("CookBook.Core.Recipes.Recipe", b =>
                 {
-                    b.OwnsOne("CookBook.Core.Recipes.Ingredients", "Ingredients", b1 =>
-                        {
-                            b1.Property<Guid>("RecipeId")
-                                .HasColumnType("uniqueidentifier");
-
-                            b1.HasKey("RecipeId");
-
-                            b1.ToTable("Recipes");
-
-                            b1.ToJson("Ingredients");
-
-                            b1.WithOwner()
-                                .HasForeignKey("RecipeId");
-
-                            b1.OwnsMany("CookBook.Core.Recipes.ValueObjects.IngredientLine", "Lines", b2 =>
-                                {
-                                    b2.Property<Guid>("IngredientsRecipeId")
-                                        .HasColumnType("uniqueidentifier");
-
-                                    b2.Property<int>("Id")
-                                        .ValueGeneratedOnAdd()
-                                        .HasColumnType("int");
-
-                                    b2.Property<string>("Description")
-                                        .HasColumnType("nvarchar(max)");
-
-                                    b2.Property<int>("Order")
-                                        .HasColumnType("int");
-
-                                    b2.Property<string>("Type")
-                                        .IsRequired()
-                                        .HasColumnType("nvarchar(max)");
-
-                                    b2.HasKey("IngredientsRecipeId", "Id");
-
-                                    b2.ToTable("Recipes");
-
-                                    b2.WithOwner()
-                                        .HasForeignKey("IngredientsRecipeId");
-                                });
-
-                            b1.Navigation("Lines");
-                        });
-
-                    b.OwnsOne("CookBook.Core.Recipes.Ratings", "Ratings", b1 =>
-                        {
-                            b1.Property<Guid>("RecipeId")
-                                .HasColumnType("uniqueidentifier");
-
-                            b1.HasKey("RecipeId");
-
-                            b1.ToTable("Recipes");
-
-                            b1.ToJson("Ratings");
-
-                            b1.WithOwner()
-                                .HasForeignKey("RecipeId");
-
-                            b1.OwnsMany("CookBook.Core.Recipes.ValueObjects.Score", "Scores", b2 =>
-                                {
-                                    b2.Property<Guid>("RatingsRecipeId")
-                                        .HasColumnType("uniqueidentifier");
-
-                                    b2.Property<int>("Id")
-                                        .ValueGeneratedOnAdd()
-                                        .HasColumnType("int");
-
-                                    b2.Property<string>("Message")
-                                        .HasColumnType("nvarchar(max)");
-
-                                    b2.Property<int>("Value")
-                                        .HasColumnType("int");
-
-                                    b2.HasKey("RatingsRecipeId", "Id");
-
-                                    b2.ToTable("Recipes");
-
-                                    b2.WithOwner()
-                                        .HasForeignKey("RatingsRecipeId");
-                                });
-
-                            b1.Navigation("Scores");
-                        });
-
                     b.OwnsOne("CookBook.Core.Recipes.ValueObjects.PreparationTime", "PreparationTime", b1 =>
                         {
                             b1.Property<Guid>("RecipeId")
@@ -286,11 +236,7 @@ namespace CookBook.Data.Migrations
 
                     b.Navigation("Description");
 
-                    b.Navigation("Ingredients");
-
                     b.Navigation("PreparationTime");
-
-                    b.Navigation("Ratings");
 
                     b.Navigation("Title");
                 });
@@ -298,6 +244,11 @@ namespace CookBook.Data.Migrations
             modelBuilder.Entity("CookBook.Core.Menus.Menu", b =>
                 {
                     b.Navigation("MealProducts");
+                });
+
+            modelBuilder.Entity("CookBook.Core.Recipes.Recipe", b =>
+                {
+                    b.Navigation("Ingredients");
                 });
 #pragma warning restore 612, 618
         }

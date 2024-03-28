@@ -15,5 +15,7 @@ public class MenuConfiguration : IEntityTypeConfiguration<Menu>
         builder.Property(x => x.Name)
             .HasConversion(x => x.Value, _ => Name.Create(_))
             .IsRequired();
+
+        builder.HasMany(_ => _.MealProducts).WithOne().IsRequired();
     }
 }

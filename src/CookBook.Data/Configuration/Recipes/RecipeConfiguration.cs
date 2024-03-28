@@ -1,9 +1,11 @@
-﻿namespace CookBook.Data.Configuration;
+﻿namespace CookBook.Data.Configuration.Recipes;
 
 public class RecipeConfiguration : IEntityTypeConfiguration<Recipe>
 {
     public void Configure(EntityTypeBuilder<Recipe> builder)
     {
+        builder.ToTable("Recipes");
+
         builder.HasKey(_ => _.Id);
         builder.Property(x => x.Id)
             .HasConversion(x => x.Value, _ => (RecipeId)_)
@@ -20,20 +22,10 @@ public class RecipeConfiguration : IEntityTypeConfiguration<Recipe>
             .HasColumnName(nameof(Recipe.Description))
             .HasConversion(_ => _.ToString(), _ => RecipeDescription.Create(_))
             .HasMaxLength(RecipeDescription.MaxLenght);
-        
+
         builder.OwnsOne(_ => _.PreparationTime, ownedNavigationBuilder => { ownedNavigationBuilder.ToJson(); });
 
-        builder.OwnsOne(_ => _.Ingredients, ownedNavigationBuilder =>
-        {
-            ownedNavigationBuilder.ToJson();
-            ownedNavigationBuilder.OwnsMany(_ => _.Lines);
-        });
-
-        builder.OwnsOne(_ => _.Ratings, ownedNavigationBuilder =>
-        {
-            ownedNavigationBuilder.ToJson();
-            ownedNavigationBuilder.OwnsMany(si => si.Scores);
-        });
+        builder.HasMany(_ => _.Ingredients).WithOne().IsRequired();
 
         builder.Ignore(_ => _.Events);
     }

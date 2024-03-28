@@ -16,7 +16,6 @@ public class RecipeTest
         recipe.Title.Should().Be(RecipeTitle.Empty);
         recipe.Description.Should().Be(RecipeDescription.Empty);
         recipe.Ingredients.Should().NotBeNull();
-        recipe.Ratings.Should().NotBeNull();
         recipe.PreparationTime.Should().NotBeNull();
     }
 

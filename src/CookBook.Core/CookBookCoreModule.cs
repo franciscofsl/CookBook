@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Sawnet.Core;
+﻿using Sawnet.Core;
 using Sawnet.Core.Modules;
 
 namespace CookBook.Core;

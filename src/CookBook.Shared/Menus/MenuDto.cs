@@ -2,7 +2,9 @@
 
 namespace CookBook.Shared.Menus;
 
-public class CreateMenuDto
+public class MenuDto
 {
+    public Guid Id { get; set; }
+
     [Required] public string Name { get; set; }
 }

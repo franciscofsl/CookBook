@@ -20,7 +20,6 @@ public class Recipe : AggregateRoot<RecipeId>
             Title = RecipeTitle.Empty,
             Description = RecipeDescription.Empty,
             Ingredients = Ingredients.Empty,
-            Ratings = Ratings.Empty,
             PreparationTime = PreparationTime.Empty
         };
     }
@@ -32,8 +31,6 @@ public class Recipe : AggregateRoot<RecipeId>
     public PreparationTime PreparationTime { get; set; }
 
     public Ingredients Ingredients { get; init; }
-
-    public Ratings Ratings { get; init; }
 
     public bool Published { get; private set; }
 
@@ -62,7 +59,7 @@ public class Recipe : AggregateRoot<RecipeId>
             return Result.Failure(RecipeErrors.NotHasDescription);
         }
 
-        if (!Ingredients.Lines.Any())
+        if (!Ingredients.Any())
         {
             return Result.Failure(RecipeErrors.NotHasIngredients);
         }
