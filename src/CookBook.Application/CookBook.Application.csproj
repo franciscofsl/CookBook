@@ -5,6 +5,10 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>disable</Nullable>
     </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Sawnet.Application" />
+    </ItemGroup>
     
     <ItemGroup>
         <ProjectReference Include="..\CookBook.Core\CookBook.Core.csproj"/>

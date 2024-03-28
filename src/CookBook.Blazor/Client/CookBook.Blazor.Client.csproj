@@ -29,6 +29,10 @@
       <_ContentIncludedByDefault Remove="wwwroot\css\open-iconic\font\fonts\open-iconic.woff" />
       <_ContentIncludedByDefault Remove="wwwroot\css\open-iconic\ICON-LICENSE" />
       <_ContentIncludedByDefault Remove="wwwroot\css\open-iconic\README.md" />
+      <_ContentIncludedByDefault Remove="Pages\Profile\Profile.razor" />
+      <_ContentIncludedByDefault Remove="Pages\Profile\Recipes\Sections\MyRecipes.razor" />
+      <_ContentIncludedByDefault Remove="Pages\Profile\Recipes\UserRecipes.razor" />
+      <_ContentIncludedByDefault Remove="Pages\Recipes\Recipes.razor" />
     </ItemGroup>
 
     <ItemGroup>
